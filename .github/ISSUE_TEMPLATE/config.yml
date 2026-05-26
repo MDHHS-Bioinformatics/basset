@@ -1,0 +1,4 @@
+contact_links:
+  - name: "BaSSeT"
+    url: https://github.com/MDHHS-Bioinformatics/basset
+    about: Discussion about the BaSSeT pipeline

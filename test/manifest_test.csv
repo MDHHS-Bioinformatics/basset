@@ -1,0 +1,4 @@
+sample,fastq_1,fastq_2,assembly,organism
+sample 1,,,test/sample_1.fasta,Escherichia
+sample_2,,,test/sample_2.fasta,Escherichia
+sample_3,,,test/sample_3.fasta,Escherichia

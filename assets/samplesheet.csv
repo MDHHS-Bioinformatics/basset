@@ -1,0 +1,5 @@
+sample,fastq_1,fastq_2,assembly,organism
+SAMPLE_1,/path/S1_R1.fastq.gz,/path/S1_R2.fastq.gz,/path/S1.fasta,Vibrio_cholerae
+SAMPLE_2,/path/S2_R1.fastq.gz,/path/S2_R2.fastq.gz,/path/S2.fasta,Shigella
+SAMPLE_3,/path/S3.fastq.gz,,/path/S3.fasta,Salmonella
+SAMPLE_4,,,/path/S4.fasta,Escherichia_coli

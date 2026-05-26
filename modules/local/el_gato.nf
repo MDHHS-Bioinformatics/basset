@@ -1,0 +1,81 @@
+process EL_GATO {
+    tag "$meta.id"
+    label 'process_medium'
+
+    //container "quay.io/biocontainers/el_gato:1.22.0--py311h7e72e81_0"
+    container "quay.io/staphb/elgato:1.22.0"
+
+    input:
+    tuple val(meta), path(reads), path(assembly)
+
+    output:
+    tuple val(meta), path("*_intermediate_outputs.txt")   , emit: txt
+    tuple val(meta), path("*_possible_mlsts.txt")         , emit: sbt
+    tuple val(meta), path("*_report.json")                , emit: json
+    tuple val(meta), path("*_run.log")                    , emit: log
+    tuple val(meta), path("*_summary.tsv")                , emit: summary
+    path "versions.yml"                                   , emit: versions
+
+    when:
+    task.ext.when == null || task.ext.when
+
+    script:
+    def args = task.ext.args ?: ''
+    prefix = task.ext.prefix ?: "${meta.id}"
+    organism = task.ext.organism ?: "${meta.organism}"
+    // Determine which input to use: prioritize reads, fallback to assembly if no reads
+    def input_command
+    def use_assembly = false
+    if (meta.layout == 'paired_end'){
+            input_command = "--read1 ${reads[0]} --read2 ${reads[1]}"  // Paired-end reads
+    } else if (meta.layout == 'assembly') {
+        // If no reads, fallback to the assembly
+        use_assembly = true
+        fasta = assembly[0]
+        is_compressed = fasta.getName().endsWith('.gz')
+        fasta_name    = fasta.getName().replace('.gz', '')
+        input_command = "--assembly ${is_compressed ? fasta_name : fasta}"
+    } else {
+        error "ERROR: Sample ${meta.id} does not have paired-end reads or assembly required by el_gato!"
+    }
+
+    """
+    if [ "${use_assembly}" = "true" ]; then
+        if [ "${is_compressed}" = "true" ]; then
+            gzip -dc ${fasta} > ${fasta_name}
+        fi
+    fi
+
+    el_gato.py \\
+        $args \\
+        --out el_gato \\
+        --overwrite \\
+        --sample ${prefix} \\
+        --header \\
+        --threads $task.cpus \\
+        $input_command
+    
+    # Rename with sample id
+    for f in el_gato/*; do
+        base=\$(basename "\$f")
+        mv "\$f" "el_gato/${prefix}_elgato_\${base}"
+    done
+    
+    # Make BaSSeT summary
+    awk -F'\t' -v sample="${prefix}" -v organism="${organism}" '
+    NR==1 {
+        for(i=1;i<=NF;i++) col[\$i]=i
+    }
+    NR==2 {
+        print sample "\t" organism "\tel_gato\tsbt\t" \$col["ST"]
+    }
+    ' el_gato/${prefix}_elgato_possible_mlsts.txt > el_gato/${prefix}_el_gato_summary.tsv
+
+    mv el_gato/* .
+
+    cat <<-END_VERSIONS > versions.yml
+    "${task.process}":
+        el_gato: \$( echo \$( el_gato.py --version 2>&1) | sed 's/^el_gato version: //' )
+    END_VERSIONS
+    """
+}

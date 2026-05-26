@@ -1,0 +1,10 @@
+cluster	tcpA_classical
+cluster_1	ctxA
+cluster_2	tcpA_ElTor
+cluster_3	tcpA_variant
+cluster_4	tcpA_variant2
+cluster_5	rstR_2ElTor
+cluster_6	rstR_1classical
+cluster_7	rstR_4Environmental
+cluster_8	rstR_3Calcutta
+ctxB_5+	ctxB_1	ctxB_3	ctxB_4	ctxB_5	ctxB_5.2	ctxB_7

@@ -1,0 +1,27 @@
+ARIBA run with this command:
+/opt/anaconda/envs/ariba/bin/ariba prepareref prepareref -f /home/vascok/workspace/features_basset/vibrio_cholerae/virulence_factors/vibrio_cholerae_vf.fa --all_coding no vc_virulence_ariba --force
+from this directory: /mnt/tb/karla_workspace/features_basset/vibrio_cholerae/virulence_factors
+
+ARIBA version: 2.14.6
+
+External dependencies:
+bowtie2	2.5.2	/usr/bin/bowtie2
+cdhit	4.8.1	/usr/bin/cd-hit-est
+nucmer	3.1	/usr/bin/nucmer
+
+External dependencies OK: True
+
+Python version:
+3.11.7 | packaged by conda-forge | (main, Dec 23 2023, 14:43:09) [GCC 12.3.0]
+
+Python packages:
+ariba	2.14.6	/opt/conda/envs/ariba/lib/python3.11/site-packages/ariba/__init__.py
+bs4	4.11.1	/opt/conda/envs/ariba/lib/python3.11/site-packages/bs4/__init__.py
+dendropy	4.5.2	/opt/conda/envs/ariba/lib/python3.11/site-packages/dendropy/__init__.py
+pyfastaq	3.17.0	/opt/conda/envs/ariba/lib/python3.11/site-packages/pyfastaq/__init__.py
+pymummer	0.10.3	/opt/conda/envs/ariba/lib/python3.11/site-packages/pymummer/__init__.py
+pysam	0.20.0	/opt/conda/envs/ariba/lib/python3.11/site-packages/pysam/__init__.py
+
+Python packages OK: True
+
+Everything looks OK: True

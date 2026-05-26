@@ -1,0 +1,54 @@
+{
+    "$schema": "http://json-schema.org/draft-07/schema",
+    "$id": "https://example.com/schema_input.json",
+    "title": "MDHHS-Bioinformatics/basset pipeline - params.input schema",
+    "description": "Schema for the file provided with params.input",
+    "type": "array",
+    "items": {
+        "type": "object",
+        "properties": {
+            "sample": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "Sample name must be provided and cannot contain spaces"
+            },
+            "fastq_1": {
+                "type": ["string", "null"],
+                "pattern": "^\\S+\\.f(ast)?q\\.gz$",
+                "errorMessage": "FastQ file for reads 1 must have extension '.fq.gz' or '.fastq.gz' and cannot contain spaces"
+            },
+            "fastq_2": {
+                "type": ["string", "null"],
+                "pattern": "^\\S+\\.f(ast)?q\\.gz$",
+                "errorMessage": "FastQ file for reads 2 must have extension '.fq.gz' or '.fastq.gz' and cannot contain spaces"
+            },
+            "annotation": {
+                "type": "string",
+                "pattern": "^\\S+\\.gff3?$",
+                "errorMessage": "Annotation file must have extension '.gff', '.gff3', '.gb', '.gbk', '.gbff' and cannot contain spaces"
+            },
+            "assembly": {
+                "type": ["string", "null"],
+                "pattern": "^(NA|\\s*|\\S+\\.(fa|fna|fasta)(\\.gz)?)$",
+                "errorMessage": "Assembly FASTA file must be 'NA', empty, or have extension '.fasta', '.fna', or '.fa', optionally compressed as '.gz', and cannot contain spaces"
+            },
+            "cluster_id": {
+                "type": "string",
+                "pattern": "^\\S+$",
+                "errorMessage": "Cluster ID cannot contain spaces or special characters"
+            },
+            "species": {
+                "type": "string",
+                "pattern": "^[\\w\\s]+$",
+                "errorMessage": "Species ID cannot contain special characters"
+            },
+            "reference": {
+                "type": "string",
+                "pattern": "^\\S+\\.(fa|fna|fasta)(\\.gz)?$",
+                "errorMessage": "Reference FASTA file must have extension '.fasta', '.fna', or '.fa', optionally compressed as '.gz', and cannot contain spaces"
+            }
+        },
+        "required": ["sample", "fastq_1", "fastq_2", "annotation", "assembly", "cluster_id", "species", "reference"],
+        "additionalProperties": false
+    }
+}
