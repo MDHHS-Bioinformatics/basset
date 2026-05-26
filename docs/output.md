@@ -492,7 +492,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 ---
 
 ## ARIBA
-[ARIBA](https://github.com/sanger-pathogens/ariba) is a tool used to identify the _Vibrio cholerae_ virulence genes ctxA, ctxB, tcpA, rstR by running local assemblies.
+[`ARIBA`](https://github.com/sanger-pathogens/ariba) is a tool used to identify the _Vibrio cholerae_ virulence genes ctxA, ctxB, tcpA, rstR by running local assemblies.
 
 <details>
 <summary>Files</summary>
@@ -505,20 +505,6 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 </details>
 
 ---
-
-## ABRicate
-[`ABRicate`](https://github.com/tseemann/abricate) is used for mass screening of contigs for antimicrobial resistance or virulence genes. It comes bundled with multiple databases: NCBI, CARD, ARG-ANNOT, Resfinder, MEGARES, EcOH, PlasmidFinder, Ecoli_VF and VFDB, VICTORS, BacMet, UPEC/ExPEC VF.
-
-<details>
-<summary>Files</summary>
-
-| File                         | Description                  |
-| ---------------------------- | ---------------------------- |
-| `<sample>_ariba_<database>.tsv` | ABRicate results for the requested database |
-
-</details>
-
-
 
 ## 🧾 Pipeline Execution Information
 

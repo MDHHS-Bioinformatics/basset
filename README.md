@@ -1,4 +1,11 @@
-# ![MDHHS-Bioinformatics/BaSSeT](docs/images/basset_logo_light.png#gh-light-mode-only) ![MDHHS-Bioinformatics/basset](docs/images/basset_logo_dark.png#gh-dark-mode-only)
+<p align="center">
+  <img src="docs/images/basset_logo_light.png#gh-light-mode-only"
+       alt="MDHHS-Bioinformatics/BaSSeT"
+       width="250">
+  <img src="docs/images/basset_logo_dark.png#gh-dark-mode-only"
+       alt="MDHHS-Bioinformatics/BaSSeT"
+       width="250">
+</p>
 
 # 🧬 BaSSeT
 
@@ -20,7 +27,9 @@
 - 📄 New and prior results are appended to a master file
 
 ## 📊 Workflow Overview
-![Pipeline Workflow](./docs/images/basset_workflow.png)
+<p align="center">
+<img src="docs/images/basset_workflow.png" width="500">
+</p>
 
 High-level steps:
 1. Input check
@@ -64,7 +73,7 @@ SAMPLE_4,,,/path/S4.fasta,Pseudomonas_aeruginosa
 | `assembly`   | FASTA assembly                                            |
 | `organism`   | Supported organism name (can be `Other` if running ABRicate for any other species)                                  |
 
-Most analyses require assemblies as input, though tools like [`el_gato`](https://github.com/CDCgov/el_gato) and [`SeqSero2`](https://github.com/denglab/SeqSero2) provide more accurate results with reads. Reads are mandatory for [`ShigaTyper`](https://github.com/cfsan-biostatistics/shigatyper), [`SeroBA`](https://github.com/sanger-pathogens/seroba) and [ARIBA](https://github.com/sanger-pathogens/ariba).
+Most analyses require assemblies as input, though tools like [`el_gato`](https://github.com/CDCgov/el_gato) and [`SeqSero2`](https://github.com/denglab/SeqSero2) provide more accurate results with reads. Reads are mandatory for [`ShigaTyper`](https://github.com/cfsan-biostatistics/shigatyper), [`SeroBA`](https://github.com/sanger-pathogens/seroba) and [`ARIBA`](https://github.com/sanger-pathogens/ariba).
 
 If the reads are from ONT, add the flag `--ont` when running your analyses.
 
@@ -92,7 +101,7 @@ If the reads are from ONT, add the flag `--ont` when running your analyses.
 | Streptococcus pneumoniae        | [`SeroBA`](https://github.com/sanger-pathogens/seroba)                | Serotyping via cps locus                                                                         | ✔️     | ✔️     | -                                           |
 | Streptococcus pyogenes          | [`emmtyper`](https://github.com/MDU-PHL/emmtyper)                     | emm type assignment                                                                              | -                                           | -                                           | ✔️     |
 | Vibrio parahaemolyticus         | [`Kaptive`](https://github.com/klebgenomics/Kaptive)                 | K/O serotyping                                                                                   | -                                           | -                                           | ✔️     |
-| Vibrio cholerae                 | [ARIBA](https://github.com/sanger-pathogens/ariba)                  | Detect ctxA, ctxB, tcpA, rstR                                                                    | ✔️     | ✔️     | -                                           |
+| Vibrio cholerae                 | [`ARIBA`](https://github.com/sanger-pathogens/ariba)                  | Detect ctxA, ctxB, tcpA, rstR                                                                    | ✔️     | ✔️     | -                                           |
 | Vibrio cholerae                 | [`Kaptive`](https://github.com/klebgenomics/Kaptive)                 | O‑antigen serotyping                                                                             | -                                           | -                                           | ✔️     |
 | All organisms / Other           | [`ABRicate`](https://github.com/tseemann/abricate)                    | Locus detection, any db via `--abricate_db`                                                      | -                                           | -                                           | ✔️     |
 
