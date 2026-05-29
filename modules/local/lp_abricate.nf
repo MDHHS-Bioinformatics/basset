@@ -2,16 +2,17 @@ process LP_ABRICATE {
     tag "${meta.id}"
     label 'process_medium'
 
-    container "quay.io/biocontainers/abricate:1.4.0--h05cac1d_0"
-
+    container "quay.io/biocontainers/abricate@sha256:56f97396771e638bd3d1660f32afcb34c111734956498dd3a4ed6dae40a1137d"
+    // "quay.io/biocontainers/abricate:1.4.0--h05cac1d_0"
+    
     input:
     tuple val(meta), path(reads), path(assembly)
     path legionella_pneumophila_db
 
     output:
-    tuple val(meta), path("${meta.id}_abricate_serogroup.tsv")   , emit: serogroup
-    tuple val(meta), path("${meta.id}_abricate_subspecies.tsv")  , emit: subspecies
-    tuple val(meta), path("${meta.id}_abricate_summary.tsv")     , emit: summary
+    tuple val(meta), path("${meta.id}_abricate_lp_serogroup.tsv")   , emit: serogroup
+    tuple val(meta), path("${meta.id}_abricate_lp_subspecies.tsv")  , emit: subspecies
+    tuple val(meta), path("${meta.id}_abricate_lp_summary.tsv")     , emit: summary
     path "versions.yml"                                          , emit: versions
 
 
@@ -29,7 +30,7 @@ process LP_ABRICATE {
         --datadir $legionella_pneumophila_db \\
         --db lp_serogroup \\
         --threads ${task.cpus} \\
-        > ${prefix}_abricate_serogroup.tsv
+        > ${prefix}_abricate_lp_serogroup.tsv
 
     abricate \\
         $assembly \\
@@ -37,7 +38,7 @@ process LP_ABRICATE {
         --datadir $legionella_pneumophila_db \\
         --db lp_subspecies \\
         --threads ${task.cpus} \\
-        > ${prefix}_abricate_subspecies.tsv
+        > ${prefix}_abricate_lp_subspecies.tsv
 
     awk -F'\t' -v prefix="${prefix}" -v organism="${organism}" '
     BEGIN { OFS="\t" }
@@ -83,7 +84,7 @@ process LP_ABRICATE {
 
         print prefix, organism, "abricate", "serogroup", final_sg
     }
-    ' "${prefix}_abricate_serogroup.tsv" > "${prefix}_abricate_summary.tsv"
+    ' "${prefix}_abricate_lp_serogroup.tsv" > "${prefix}_abricate_lp_summary.tsv"
 
     awk -F'\t' -v prefix="${prefix}" -v organism="${organism}" '
     BEGIN { OFS="\t" }
@@ -103,7 +104,7 @@ process LP_ABRICATE {
             print prefix, organism, "abricate", "subspecies", best_gene
         }
     }
-    ' "${prefix}_abricate_subspecies.tsv" >> "${prefix}_abricate_summary.tsv"
+    ' "${prefix}_abricate_lp_subspecies.tsv" >> "${prefix}_abricate_lp_summary.tsv"
 
     cat <<-END_VERSIONS > versions.yml
     "${task.process}":
