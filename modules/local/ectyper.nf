@@ -2,7 +2,8 @@ process ECTYPER {
     tag "$meta.id"
     label 'process_medium'
 
-    container "quay.io/biocontainers/ectyper:2.0.0--pyhdfd78af_4"
+    container "quay.io/biocontainers/ectyper@sha256:eb98dad0da8a8dbf8864ab724aa51bd59db1a5a80705cadb9c6e0a834ab4ba85"
+    // "quay.io/biocontainers/ectyper:2.0.0--pyhdfd78af_4"
 
     input:
     tuple val(meta), path(reads), path(assembly)

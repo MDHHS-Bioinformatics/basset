@@ -2,8 +2,9 @@ process KAPTIVE_VCHOLERAE {
     tag "$meta.id"
     label 'process_medium'
 
-    container "quay.io/biocontainers/kaptive:3.2.1--pyhdfd78af_0"
-
+    container "quay.io/staphb/kaptive@sha256:dbf67cd9a82269e03cd0b0dbeb7079112d9ae50557eed0c1edc6011b4cf007a8"
+    // "quay.io/staphb/kaptive:3.2.1"
+    
     input:
     tuple val(meta), path(reads), path(assembly)
     path vibrio_cholerae_o_db

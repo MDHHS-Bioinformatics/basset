@@ -2,7 +2,8 @@ process PBPTYPER {
     tag "${meta.id}"
     label 'process_medium'
 
-    container "quay.io/biocontainers/pbptyper:2.0.0--hdfd78af_0"
+    container "quay.io/biocontainers/pbptyper@sha256:6c1867a14528a4bbe5d7eed5bd9bca64ecd1604d4f1f3641e5c0d7ca4345ed47"
+    // "quay.io/biocontainers/pbptyper:2.0.0--hdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

@@ -2,7 +2,8 @@ process MENINGOTYPE {
     tag "$meta.id"
     label 'process_low'
 
-    container "quay.io/biocontainers/meningotype:0.8.6b--pyhdfd78af_0"
+    container "quay.io/biocontainers/meningotype@sha256:db45c259335cc7ad549e7a965d32f85c8b1ebaa42034ae625463772d90cb7af2"
+    // "quay.io/biocontainers/meningotype:0.8.6b--pyhdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

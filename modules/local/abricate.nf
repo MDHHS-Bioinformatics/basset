@@ -2,7 +2,8 @@ process ABRICATE {
     tag "${meta.id}"
     label 'process_medium'
 
-    container "quay.io/biocontainers/abricate:1.4.0--h05cac1d_0"
+    container "quay.io/biocontainers/abricate@sha256:56f97396771e638bd3d1660f32afcb34c111734956498dd3a4ed6dae40a1137d"
+    // "quay.io/biocontainers/abricate:1.4.0--h05cac1d_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

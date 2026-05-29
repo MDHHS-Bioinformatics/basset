@@ -2,7 +2,8 @@ process LISSERO {
     tag "$meta.id"
     label 'process_low'
 
-    container "quay.io/biocontainers/lissero:0.4.10--pyhdfd78af_0"
+    container "quay.io/biocontainers/lissero@sha256:7f98157516187944a503985e8a307f666207b4e3c2969abe5235b2b328fad007"
+    // "quay.io/biocontainers/lissero:0.4.10--pyhdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

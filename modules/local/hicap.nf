@@ -3,7 +3,8 @@ process HICAP {
     label 'process_low'
     errorStrategy 'ignore'
 
-    container "quay.io/biocontainers/hicap:1.0.4--pyhdfd78af_2"
+    container "quay.io/biocontainers/hicap@sha256:c9d2d2bb63c1a869543217f79cd08c85989a8fac145f61b5402babbc4670764a"
+    // "quay.io/biocontainers/hicap:1.0.4--pyhdfd78af_2"
 
     input:
     tuple val(meta), path(reads), path(assembly)

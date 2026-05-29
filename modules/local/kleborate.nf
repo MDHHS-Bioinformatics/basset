@@ -2,7 +2,8 @@ process KLEBORATE {
     tag "$meta.id"
     label 'process_medium'
 
-    container "quay.io/biocontainers/kleborate:3.2.4--pyhdfd78af_0"
+    container "quay.io/biocontainers/kleborate@sha256:51d5627fb1835f0e8600ef38dc1ed63c823cc0babe4e4f1e73e5f1a4722817cf"
+    // "quay.io/biocontainers/kleborate:3.2.4--pyhdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

@@ -2,7 +2,8 @@ process SHIGEIFINDER {
     tag "$meta.id"
     label 'process_medium'
 
-    container "quay.io/biocontainers/shigeifinder:1.3.5--pyhdfd78af_0"
+    container "quay.io/biocontainers/shigeifinder@sha256:938e6d771ce71f87b625c0ff616d595d55b0b742fcffb89742b67aad81b57013"
+    // "quay.io/biocontainers/shigeifinder:1.3.5--pyhdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

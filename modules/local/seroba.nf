@@ -2,7 +2,8 @@ process SEROBA {
     tag "$meta.id"
     label 'process_low'
 
-    container "sangerbentleygroup/seroba:2.0.6"
+    container "sangerbentleygroup/seroba@sha256:f72ff38a051dde6bf3c755e3d5c96ba6e8f5e15c0dc967187065c72f7f1a0ff2"
+    // "sangerbentleygroup/seroba:2.0.6"
 
     input:
     tuple val(meta), path(reads), path(assembly)

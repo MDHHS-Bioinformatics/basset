@@ -2,7 +2,8 @@ process SHIGATYPER {
     tag "$meta.id"
     label 'process_low'
 
-    container "quay.io/biocontainers/shigatyper:2.0.5--pyhdfd78af_0"
+    container "quay.io/biocontainers/shigatyper@sha256:a7f11cb5a43d48f977dc87fb2ec3f4b9f259d5ac79b5cb531cc80a7f67042c37"
+    // "quay.io/biocontainers/shigatyper:2.0.5--pyhdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

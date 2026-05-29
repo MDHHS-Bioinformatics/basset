@@ -2,7 +2,8 @@ process SEQSERO2 {
     tag "$meta.id"
     label 'process_medium'
 
-    container "quay.io/biocontainers/seqsero2:1.3.2--pyhdfd78af_0"
+    container "quay.io/biocontainers/seqsero2@sha256:f21a1590fa916deab4418a232c3b1c4e8ade920effda82f8fca88b932fc0e769"
+    // "quay.io/biocontainers/seqsero2:1.3.2--pyhdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

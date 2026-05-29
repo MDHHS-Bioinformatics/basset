@@ -3,7 +3,8 @@ process SISTR {
     label 'process_medium'
     //errorStrategy 'ignore'
 
-    container "quay.io/biocontainers/sistr_cmd:1.1.3--pyhdc42f0e_2"
+    container "quay.io/biocontainers/sistr_cmd@sha256:91619cb8daecadeeb457f56e38bd6e5ec980d76e521067eccf1355984bfd4171"
+    // "quay.io/biocontainers/sistr_cmd:1.1.3--pyhdc42f0e_2"
 
     input:
     tuple val(meta), path(reads), path(assembly)

@@ -2,7 +2,8 @@ process SPATYPER {
     tag "$meta.id"
     label 'process_low'
 
-    container "quay.io/biocontainers/spatyper:0.3.3--pyhdfd78af_3"
+    container "quay.io/biocontainers/spatyper@sha256:8c29abb04a86643c36a7bc46e08141b4c181e1ea25bfd90e9b43f22f0940bc82"
+    // "quay.io/biocontainers/spatyper:0.3.3--pyhdfd78af_3"
 
     input:
     tuple val(meta), path(reads), path(assembly)

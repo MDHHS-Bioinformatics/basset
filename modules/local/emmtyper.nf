@@ -2,7 +2,8 @@ process EMMTYPER {
     tag "$meta.id"
     label 'process_low'
 
-    container "quay.io/biocontainers/emmtyper:0.2.0--py_0"
+    container "quay.io/staphb/emmtyper@sha256:544873e26de1753691f7765118cfc6295e18c46008a70968b251ad830ebf344a"
+    // "quay.io/staphb/emmtyper:0.2.0-2505"
 
     input:
     tuple val(meta), path(reads), path(assembly)

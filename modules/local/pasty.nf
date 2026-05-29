@@ -2,7 +2,8 @@ process PASTY {
     tag "${meta.id}"
     label 'process_medium'
 
-    container "quay.io/biocontainers/pasty:2.2.1--hdfd78af_0"
+    container "quay.io/biocontainers/pasty@sha256:2176d371c9061e8ad52bbac90b3eca5f1b79888d9fc59a6f7df845ba92c1c841"
+    // "quay.io/biocontainers/pasty:2.2.1--hdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

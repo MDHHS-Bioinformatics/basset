@@ -2,8 +2,8 @@ process SCCMEC {
     tag "$meta.id"
     label 'process_low'
 
-    conda "${moduleDir}/environment.yml"
-    container "quay.io/biocontainers/sccmec:1.2.0--hdfd78af_0"
+    container "quay.io/biocontainers/sccmec@sha256:6b8f6b25bd125bbc9b5997fbea9a2a61c56659594af65c47c3790b34d4c34a76"
+    // "quay.io/biocontainers/sccmec:1.2.0--hdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

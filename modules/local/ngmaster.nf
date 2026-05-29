@@ -2,8 +2,8 @@ process NGMASTER {
     tag "$meta.id"
     label 'process_low'
 
-    conda "${moduleDir}/environment.yml"
-    container "quay.io/biocontainers/ngmaster:2.0.0--pyhdfd78af_0"
+    container "quay.io/biocontainers/ngmaster@sha256:e915dc192be212ab7f9813b937a3ad0c7afd2f32e7f7d7a58326a1fe91b1899c"
+    // "quay.io/biocontainers/ngmaster:2.0.0--pyhdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

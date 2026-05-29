@@ -2,7 +2,8 @@ process AGRVATE {
     tag "$meta.id"
     label 'process_low'
 
-    container "quay.io/biocontainers/agrvate:1.0.2--hdfd78af_0"
+    container "quay.io/biocontainers/agrvate@sha256:69a7f3d16d6641206a9c1dd09c5f1c3e68ace8e50c4593703dbff52399a5aa03"
+    // "quay.io/biocontainers/agrvate:1.0.2--hdfd78af_0"
 
     input:
     tuple val(meta), path(reads), path(assembly)
