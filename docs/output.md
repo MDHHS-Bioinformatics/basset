@@ -12,7 +12,7 @@ All paths described below are relative to the pipeline output directory specifie
 
 # 📊 Output Directory Structure
 
-Results are organized by **species** and **cluster**:
+Results are organized by **organism** except by the ABRicate results:
 
 ```
    📁 <outdir>
@@ -38,9 +38,9 @@ Results are organized by **species** and **cluster**:
     │   ├── 📄 <sample>_kleborate_output.tsv
     │   └── 📄 <sample>_kleborate_summary.tsv
     ├── 📁 Legionella_pneumophila
-    │   ├── 📄 <sample>_abricate_serogroup.tsv
-    │   ├── 📄 <sample>_abricate_subspecies.tsv
-    │   ├── 📄 <sample>_abricate_summary.tsv
+    │   ├── 📄 <sample>_abricate_lp_serogroup.tsv
+    │   ├── 📄 <sample>_abricate_lp_subspecies.tsv
+    │   ├── 📄 <sample>_abricate_lp_summary.tsv
     │   ├── 📄 <sample>_elgato_intermediate_outputs.txt
     │   ├── 📄 <sample>_elgato_possible_mlsts.txt
     │   ├── 📄 <sample>_elgato_report.json
@@ -56,12 +56,12 @@ Results are organized by **species** and **cluster**:
     │   ├── 📄 <sample>_meningotype_output.tsv
     │   └── 📄 <sample>_meningotype_summary.tsv
     ├── 📁 pipeline_info
-    │   ├── execution_report_YYYY-MM-DD_HH-MM-SS.html
-    │   ├── execution_timeline_YYYY-MM-DD_HH-MM-SS.html
-    │   ├── execution_trace_YYYY-MM-DD_HH-MM-SS.txt
-    │   ├── pipeline_dag_YYYY-MM-DD_HH-MM-SS.html
-    │   ├── samplesheet.valid.csv
-    │   └── software_versions.yml
+    │   ├── 📄 execution_report_YYYY-MM-DD_HH-MM-SS.html
+    │   ├── 📄 execution_timeline_YYYY-MM-DD_HH-MM-SS.html
+    │   ├── 📄 execution_trace_YYYY-MM-DD_HH-MM-SS.txt
+    │   ├── 📄 pipeline_dag_YYYY-MM-DD_HH-MM-SS.html
+    │   ├── 📄 samplesheet.valid.csv
+    │   └── 📄 software_versions.yml
     ├── 📁 Pseudomonas_aeruginosa
     │   ├── 📄 <sample>_pasty.blastn.tsv
     │   ├── 📄 <sample>_pasty.details.tsv
@@ -127,17 +127,21 @@ basset_summary_batch.tsv
 basset_summary_master.tsv
 ```
 
-This file concatenates results from different typing tools and organisms into a single file. Results from ABRicate or _E. coli_ pathotypes are not included in the summary.
+These files concatenate results from different typing tools and organisms into a single file. 
+
+> Results from ABRicate or _E. coli_ pathotypes are not included in the summary.
 
 | Column                  | Description                            |
 | ----------------------- | -------------------------------------- |
 | `sample`                | Sample identifier                      |
-| `organism`               | Supported organism                           |
-| `tool`            | Tool name                     |
-| `result_type`   | Analysis or antigenic marker |
-| `result_value`      | Typing result |
-| `tool_version`              | Tool version used in the analysis                   |
-| `analysis_date`       | YYYY-MM-DD                              |
+| `organism`              | Supported organism                     |
+| `tool`                  | Tool name                              |
+| `result_type`           | Analysis or antigenic marker           |
+| `result_value`          | Typing result                          |
+| `tool_version`          | Tool version used in the analysis      |
+| `basset_version`        | BaSSeT version used in the analysis    |
+| `analysis_date`         | YYYY-MM-DD                             |
+
 
 ---
 
@@ -214,12 +218,12 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 ---
 
 ## Kleborate
-[`Kleborate`](https://github.com/klebgenomics/Kleborate) as primarily developed to screen genome assemblies of _Klebsiella pneumoniae_ and the _Klebsiella pneumoniae_ species complex (KpSC) for:
+[`Kleborate`](https://github.com/klebgenomics/Kleborate) is primarily developed to screen genome assemblies of _Klebsiella pneumoniae_ and the _Klebsiella pneumoniae_ species complex (KpSC) for:
 
 * Species (e.g. _K. pneumoniae, K. quasipneumoniae, K. variicola_, etc.)
 * K. pneumoniae species complex MLST
-* ICEKp associated virulence loci: yersiniabactin (ybt), colibactin (clb), salmochelin (iro), hypermucoidy (rmp)
-* Virulence plasmid associated loci: salmochelin (iro), aerobactin (iuc), hypermucoidy (rmp, rmpA2)
+* ICEKp associated virulence loci: yersiniabactin (_ybt_), colibactin (_clb_), salmochelin (_iro_), hypermucoidy (_rmp_)
+* Virulence plasmid associated loci: salmochelin (_iro_), aerobactin (_iuc_), hypermucoidy (_rmp_, _rmpA2_)
 * Antimicrobial resistance determinants: acquired genes, SNPs, gene truncations and intrinsic β-lactamases
 * Prediction of phenotypic resistance to ciprofloxacin
 * K (capsule) and O antigen (LPS) serotype prediction, via wzi alleles and Kaptive
@@ -229,7 +233,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                              | Description                 |
 | --------------------------------- | --------------------------- |
-| `<sample>_kleborate_output.tsv`   | Klebsiella typing results |
+| `<sample>_kleborate_output.tsv`   | _Klebsiella_ typing results |
 | `<sample>_kleborate_summary.tsv`  | BaSSet-formated results       |
 
 </details>
@@ -262,9 +266,9 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_abricate_summary.tsv` | BaSSet-formated results |
-| `<sample>_abricate_serogroup.tsv` | Log messages of intermediate analyses |
-| `<sample>_abricate_subspecies.tsv` | All possible ST profiles in case multiple possible alleles are identified for any ST loci |
+| `<sample>_abricate_lp_summary.tsv` | BaSSet-formated results |
+| `<sample>_abricate_lp_serogroup.tsv` | ABRicate results for *wzm*/*wzt* alleles |
+| `<sample>_abricate_lp_subspecies.tsv` | ABRicate results for _Legionella pneumophila_ subsepecies |
 
 </details>
 
@@ -286,7 +290,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 ---
 
 ## NGMASTER
-[`NGMASTER`](https://github.com/MDU-PHL/ngmaster) is used for _Neisseria gonorrhoeae_ porB/tbpB typing; AMR typing
+[`NGMASTER`](https://github.com/MDU-PHL/ngmaster) is used for _Neisseria gonorrhoeae_ _porB/tbpB_ typing; AMR typing
 
 <details>
 <summary>Files</summary>
@@ -381,7 +385,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 ---
 
 ## ShigEiFinder
-[`ShigEiFinder`](https://github.com/LanLab/ShigEiFinder) is a tool that is used to identify differentiate Shigella/EIEC using cluster-specific genes and identify the serotype using O-antigen/H-antigen genes.
+[`ShigEiFinder`](https://github.com/LanLab/ShigEiFinder) is a tool for differentiating Shigella/EIEC using cluster-specific genes and identifying the serotype using O-antigen/H-antigen genes.
 
 <details>
 <summary>Files</summary>
@@ -492,7 +496,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 ---
 
 ## ARIBA
-[`ARIBA`](https://github.com/sanger-pathogens/ariba) is a tool used to identify the _Vibrio cholerae_ virulence genes ctxA, ctxB, tcpA, rstR by running local assemblies.
+[`ARIBA`](https://github.com/sanger-pathogens/ariba) is a tool used to identify the _Vibrio cholerae_ virulence genes _ctxA, ctxB, tcpA, rstR_ by running local assemblies.
 
 <details>
 <summary>Files</summary>

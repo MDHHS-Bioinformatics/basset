@@ -45,14 +45,14 @@ Each row corresponds to **one isolate/sample**.
 
 ### 📥 Samplesheet Specification
 
-The samplesheet must contain **8 columns** with the following headers.
+The samplesheet must contain **5 columns** with the following headers.
 
 | Column    | Description                                                                                                                                                                            |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `sample`  | Unique sample identifier. Spaces in sample names are automatically converted to underscores (`_`). |
 | `fastq_1` | Full path to FastQ file for Illumina QC trimmed short reads 1. File has to be gzipped and have the extension `.fastq.gz` or `.fq.gz`. (leave empty if not available)                                                 |
 | `fastq_2` | Full path to FastQ file for Illumina QC trimmed short reads 2. File has to be gzipped and have the extension `.fastq.gz` or `.fq.gz`. (leave empty for single-end, ONT or assemblies)                                                  |
-| `assembly` | Full path to assembled genome file. File can be gzipped and have the extension `.fasta`, `.fa`, `.fna`, `.fasta.gz`, `.fa.gz` or .`fna.gz`|
+| `assembly` | Full path to assembled genome file. File can be gzipped and have the extension `.fasta`, `.fa`, `.fas`, `.fna`, `.fasta.gz`, `.fa.gz`, `.fas.gz` or .`fna.gz`|
 | `organism`  | Supported organism name (can be `Other` if running ABRicate for any other species). Spaces in organism are automatically converted to underscores (`_`).   |
 
 ---
@@ -63,7 +63,7 @@ The samplesheet must contain **8 columns** with the following headers.
 > All columns must still be present in the CSV file.
 
 > [!IMPORTANT]
-> All samples within a run must use the same sequencing format if using `--ont`
+> All samples within a run must use the same sequencing format if using `--ont`. The only tools that accept ONT as input are `ECTyper`, `SeqSero2` and `ShigaTyper`.
 
 Most analyses require assemblies as input, though tools like [`el_gato`](https://github.com/CDCgov/el_gato) and [`SeqSero2`](https://github.com/denglab/SeqSero2) provide more accurate results with reads. Reads are mandatory for [`ShigaTyper`](https://github.com/cfsan-biostatistics/shigatyper), [`SeroBA`](https://github.com/sanger-pathogens/seroba) and [ARIBA](https://github.com/sanger-pathogens/ariba).
 
