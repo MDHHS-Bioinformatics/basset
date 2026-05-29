@@ -33,8 +33,10 @@ class RowChecker:
         ".fasta",
         ".fna",
         ".fa",
+        ".fas",
         ".fasta.gz",
         ".fa.gz", 
+        ".fas.gz", 
         ".fna.gz"
     )
 
