@@ -179,7 +179,8 @@ workflow BASSET {
     //
     KAPTIVE_VCHOLERAE(
         INPUT_CHECK.out.vibrio_cholerae_input_files,
-        file(params.vibrio_cholerae_o_db)
+        file(params.vibrio_cholerae_o_db),
+        file(params.vibrio_cholerae_o_logic)
     )
     ch_summaries = ch_summaries.mix(KAPTIVE_VCHOLERAE.out.summary)
     ch_versions = ch_versions.mix(KAPTIVE_VCHOLERAE.out.versions.first())
