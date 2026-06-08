@@ -170,6 +170,10 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 ## Kaptive
 [`Kaptive`](https://github.com/klebgenomics/Kaptive) is used for surface polysaccharide typing from bacterial genome sequences, including: _Klebsiella pneumoniae_ complex (K and O), _Acinetobacter baumanni_ (K and OC), _Vibrio cholerae_ (O) and _Vibrio parahaemolitycus_ (O).
 
+>[!NOTE]
+> - BaSSeT summaries report *Vibrio cholerae* serotype predictions only at the major group level: **O1**, **O139**, **non-O1/non-O139**, or **unassigned (-)**. This reporting approach is based on concordance evaluation between Kaptive and VicPred, which showed complete agreement (100%) for major serogroup classification but lower agreement for O1 variant (80%) and non-O1/non-O139 serotype-level (63%) comparisons.
+> - For more detailed typing results, users should inspect the full Kaptive output. Assignment of **O1-Inaba** or **O1-Ogawa** should be interpreted with caution and further investigated based on the status of the _wbeT_ gene.
+
 <details>
 <summary>Files</summary>
 
