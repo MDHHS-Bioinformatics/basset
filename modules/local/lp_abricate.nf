@@ -23,9 +23,26 @@ process LP_ABRICATE {
     def args    = task.ext.args   ?: ''
     prefix  = task.ext.prefix ?: "${meta.id}"
     organism = task.ext.organism ?: "${meta.organism}"
+
+    def fasta = null
+    def is_compressed = false
+    def fasta_name = null
+    if (meta.has_assembly) {
+        fasta = assembly[0]
+        is_compressed = fasta.getName().endsWith('.gz')
+        fasta_name = fasta.getName().replace('.gz', '')
+    }  else {
+        error "ERROR: Sample ${meta.id} does not have valid assembly required by ABRicate!"
+    }
+
     """
+    if [ "$is_compressed" == "true" ]; then
+        gzip -c -d $fasta > $fasta_name
+    fi
+
+
     abricate \\
-        $assembly \\
+        $fasta_name \\
         ${args} \\
         --datadir $legionella_pneumophila_db \\
         --db lp_serogroup \\
@@ -33,7 +50,7 @@ process LP_ABRICATE {
         > ${prefix}_abricate_lp_serogroup.tsv
 
     abricate \\
-        $assembly \\
+        $fasta_name \\
         ${args} \\
         --datadir $legionella_pneumophila_db \\
         --db lp_subspecies \\
