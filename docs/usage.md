@@ -189,6 +189,15 @@ For more details about the output files and reports, please refer to the [`Outpu
 
 * **Disk cleanup:** After the pipeline completes, you may safely remove the Nextflow `work/` directory to reclaim space.
 
+* HICap may fail when no _cap_ is detected. Therefore, HICap errors are ignored. In these cases, you may see the following message:
+
+```bash
+-[MDHHS-Bioinformatics/basset] Pipeline completed successfully, but with errored process(es)-
+[xxxx/yyyyy] NOTE: Process `BASSET:HICAP (<sample>)` terminated with an error exit status (1) -- Error is ignored
+```
+
+If this occurs, HICAP results cannot be reported.
+
 
 # 🔁 Reproducibility
 
