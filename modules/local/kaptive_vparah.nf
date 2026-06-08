@@ -41,13 +41,13 @@ process KAPTIVE_VPARAH {
 
     kaptive assembly \\
         $vibriopara_k_db \\
-        $fasta \\
+        $fasta_name \\
         $args \\
         --out ${prefix}_kaptive_k.tsv
 
     kaptive assembly \\
         $vibriopara_o_db \\
-        $fasta \\
+        $fasta_name \\
         $args \\
         --out ${prefix}_kaptive_o.tsv
 

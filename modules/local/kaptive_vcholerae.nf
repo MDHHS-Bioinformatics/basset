@@ -40,7 +40,7 @@ process KAPTIVE_VCHOLERAE {
 
     kaptive assembly \\
         $vibrio_cholerae_o_db \\
-        $fasta \\
+        $fasta_name \\
         $args \\
         --out ${prefix}_kaptive_o.tsv
 
