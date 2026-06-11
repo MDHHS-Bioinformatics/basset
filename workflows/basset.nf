@@ -121,8 +121,13 @@ workflow BASSET {
     //
     // MODULE: Vibrio cholerae virulence factor identification
     //
+    ch_ariba_reads = INPUT_CHECK.out.shigella_input_files
+        .filter { meta, reads_files, assembly_files ->
+            meta.layout in ['paired_end']
+    }
+
     ARIBA(
-        INPUT_CHECK.out.vibrio_cholerae_input_files,
+        ch_ariba_reads,
         params.vibrio_cholerae_vf_db
     )
     ch_summaries = ch_summaries.mix(ARIBA.out.summary)
@@ -280,8 +285,13 @@ workflow BASSET {
   
     // MODULE: Streptococcus pneumoniae serotyping
     //
+    ch_seroba_reads = INPUT_CHECK.out.shigella_input_files
+        .filter { meta, reads_files, assembly_files ->
+            meta.layout in ['paired_end']
+    }
+
     SEROBA(
-        INPUT_CHECK.out.spneumoniae_input_files
+        ch_seroba_reads
     )
     ch_summaries = ch_summaries.mix(SEROBA.out.summary)
     ch_versions = ch_versions.mix(SEROBA.out.versions.first())
@@ -289,8 +299,13 @@ workflow BASSET {
     //
     // MODULE: Shigella serotyping
     //
+    ch_shigatyper_reads = INPUT_CHECK.out.shigella_input_files
+        .filter { meta, reads_files, assembly_files ->
+            meta.layout in ['single_end', 'paired_end']
+    }
+
     SHIGATYPER(
-        INPUT_CHECK.out.shigella_input_files
+       ch_shigatyper_reads
     )
     ch_summaries = ch_summaries.mix(SHIGATYPER.out.summary)
     ch_versions = ch_versions.mix(SHIGATYPER.out.versions.first())
