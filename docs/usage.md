@@ -198,6 +198,33 @@ For more details about the output files and reports, please refer to the [`Outpu
 
 If this occurs, HICAP results cannot be reported.
 
+* When running BaSSET with Singularity or Apptainer on HPC systems, failures can occur when multiple organisms or samples start at the same time and Nextflow tries to pull the same container images concurrently. This can cause collisions in the container cache.
+
+To avoid this, we recommend pre-pulling all required BaSSET container images before launching the workflow.
+
+For Apptainer:
+
+```bash
+bash bin/prefetch_basset_containers_apptainer.sh
+```
+
+For Singularity:
+```bash
+bash bin/prefetch_basset_containers_singularity.sh
+```
+
+Make sure the corresponding Nextflow cache directory is set before running the script, for example:
+
+```bash
+export NXF_APPTAINER_CACHEDIR=/path/to/shared/nextflow/apptainer/cache
+```
+
+or:
+```bash
+export NXF_SINGULARITY_CACHEDIR=/path/to/shared/nextflow/singularity/cache
+```
+
+Nextflow recommends using a centralized cache directory for Apptainer/Singularity containers rather than relying on the default work-directory cache, and Apptainer also supports APPTAINER_CACHEDIR for its own OCI/layer cache.
 
 # 🔁 Reproducibility
 
