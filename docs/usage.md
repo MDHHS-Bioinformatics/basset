@@ -50,7 +50,7 @@ The samplesheet must contain **5 columns** with the following headers.
 | Column    | Description                                                                                                                                                                            |
 | --------- | -------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------- |
 | `sample`  | Unique sample identifier. Spaces in sample names are automatically converted to underscores (`_`). No symbols other than hyphens (-) or underscores (_) are allowed |
-| `fastq_1` | Full path to FastQ file for Illumina QC trimmed short reads 1. File has to be gzipped and have the extension `.fastq.gz` or `.fq.gz`. (leave empty if not available)                                                 |
+| `fastq_1` | Full path to FastQ file for Illumina or Nanopore QC trimmed reads 1. File has to be gzipped and have the extension `.fastq.gz` or `.fq.gz`. (leave empty if not available)                                                 |
 | `fastq_2` | Full path to FastQ file for Illumina QC trimmed short reads 2. File has to be gzipped and have the extension `.fastq.gz` or `.fq.gz`. (leave empty for single-end, ONT or assemblies)                                                  |
 | `assembly` | Full path to assembled genome file. File can be gzipped and have the extension `.fasta`, `.fa`, `.fas`, `.fna`, `.fasta.gz`, `.fa.gz`, `.fas.gz` or .`fna.gz`|
 | `organism`  | Supported organism name (can be `Other` if running ABRicate for any other species). Spaces in organism are automatically converted to underscores (`_`).   |
