@@ -18,34 +18,36 @@ process SEQSERO2 {
     when:
     task.ext.when == null || task.ext.when
 
+    // Determine which input to use: prioritize reads, fallback to assembly if no reads
     script:
     def args = task.ext.args ?: ''
     prefix = task.ext.prefix ?: "${meta.id}"
     organism = task.ext.organism ?: "${meta.organism}"
-    // Determine which input to use: prioritize reads, fallback to assembly if no reads
-    def use_assembly = false
+
     def input_command
+    def prep_command = ''
+
     if (meta.layout == 'single_end') {
-        input_command = "-i ${reads[0]} -m k"   + (params.ont ? " -t 5" : " -t 3") // Single-end reads or nanopore
-    } else if (meta.layout == 'paired_end'){
-            input_command = "-i ${reads[0]} ${reads[1]} -m a -t 2"  // Paired-end reads
+        input_command = "-i ${reads[0]} -m k" + (params.ont ? " -t 5" : " -t 3")
+    } else if (meta.layout == 'paired_end') {
+        input_command = "-i ${reads[0]} ${reads[1]} -m a -t 2"
     } else if (meta.layout == 'assembly') {
-        // If no reads, fallback to the assembly
-        use_assembly = true
-        fasta = assembly[0]
-        is_compressed = fasta.getName().endsWith('.gz')
-        fasta_name    = fasta.getName().replace('.gz', '')
-        input_command = "-i ${fasta_name} -m k -t 4"  // Assembly (contigs)
+        def fasta = assembly[0]
+        def is_compressed = fasta.getName().endsWith('.gz')
+        def fasta_name = fasta.getName().replaceFirst(/\.gz$/, '')
+
+        if (is_compressed) {
+            prep_command = "gzip -dc ${fasta} > ${fasta_name}"
+            input_command = "-i ${fasta_name} -m k -t 4"
+        } else {
+            input_command = "-i ${fasta} -m k -t 4"
+        }
     } else {
         error "ERROR: Sample ${meta.id} does not have valid reads or assembly required by SeqSero2!"
     }
 
     """
-    if [ "${use_assembly}" = "true" ]; then
-        if [ "${is_compressed}" = "true" ]; then
-            gzip -dc ${fasta} > ${fasta_name}
-        fi
-    fi
+    ${prep_command}
 
     SeqSero2_package.py \\
         $args \\
@@ -53,13 +55,13 @@ process SEQSERO2 {
         -n ${prefix} \\
         -p $task.cpus \\
         $input_command
-    
+
     # Rename with sample id
     for f in seqsero2/*; do
         base=\$(basename "\$f")
         mv "\$f" "seqsero2/${prefix}_\${base}"
     done
-    
+
     mv seqsero2/* .
 
     # Generating BaSSeT summary file 

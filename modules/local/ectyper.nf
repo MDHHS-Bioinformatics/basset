@@ -25,27 +25,32 @@ process ECTYPER {
     organism = task.ext.organism ?: "${meta.organism}"
 
     def input_command
-    def fasta = null
-    def is_compressed = false
-    def fasta_name = null
+    def prep_command = ''
+
     if (meta.has_assembly) {
-        fasta = assembly[0]
-        is_compressed = fasta.getName().endsWith('.gz')
-        fasta_name = fasta.getName().replace('.gz', '')
-        input_command = "--input ${fasta_name}"
+        def fasta = assembly[0]
+        def is_compressed = fasta.getName().endsWith('.gz')
+        def fasta_name = fasta.getName().replaceFirst(/\.gz$/, '')
+
+        if (is_compressed) {
+            prep_command = "gzip -dc ${fasta} > ${fasta_name}"
+            input_command = "--input ${fasta_name}"
+        } else {
+            input_command = "--input ${fasta}"
+        }
+
     // If no assembly, fallback to the long reads
     } else if (meta.layout == 'single_end' && params.ont) {
         input_command = "--input ${reads[0]} --longreads"
-    }  else {
+
+    } else {
         error "ERROR: Sample ${meta.id} does not have valid longreads or assembly required by ECTyper!"
     }
 
-    if (ecoli_pathotypes) {pathotypes = "--pathotype"} else {pathotypes = ""}
+    def pathotypes = ecoli_pathotypes ? "--pathotype" : ""
 
     """
-    if [ "$is_compressed" == "true" ]; then
-        gzip -c -d $fasta > $fasta_name
-    fi
+    ${prep_command}
 
     ectyper \\
         $args \\

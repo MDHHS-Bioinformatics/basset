@@ -20,26 +20,41 @@ process SHIGEIFINDER {
     def args = task.ext.args ?: ''
     prefix = task.ext.prefix ?: "${meta.id}"
     organism = task.ext.organism ?: "${meta.organism}"
-    // Determine which input to use: prioritize reads, fallback to assembly if no reads
+
     def input_command
+    def prep_command = ''
+
     if (meta.has_assembly) {
-        // If no reads, fallback to the assembly
-        input_command = "-i ${assembly}"  // Assembly (contigs)
+        def fasta = assembly[0]
+        def is_compressed = fasta.getName().endsWith('.gz')
+        def fasta_name = fasta.getName().replaceFirst(/\.gz$/, '')
+
+        if (is_compressed) {
+            prep_command = "gzip -dc ${fasta} > ${fasta_name}"
+            input_command = "-i ${fasta_name}"
+        } else {
+            input_command = "-i ${fasta}"
+        }
+
     } else if (meta.layout == 'single_end') {
-        input_command = "-i ${reads[0]} --single-end" // Single-end reads
-    } else if (meta.layout == 'paired_end'){
-            input_command = "-i ${reads[0]} ${reads[1]}"  // Paired-end reads
+        input_command = "-i ${reads[0]} --single-end"
+
+    } else if (meta.layout == 'paired_end') {
+        input_command = "-i ${reads[0]} ${reads[1]}"
+
     } else {
         error "ERROR: Sample ${meta.id} does not have valid reads or assembly required by ShigEiFinder!"
     }
 
     """
+    ${prep_command}
+
     shigeifinder \\
         $args \\
         $input_command \\
         -t $task.cpus \\
         --output ${prefix}_shigeifinder_output.tsv
-    
+
     # Generating BaSSeT summary file 
     awk -F'\t' -v prefix="${prefix}" -v organism="${organism}" '
     BEGIN { OFS="\t" }

@@ -25,26 +25,27 @@ process EL_GATO {
     organism = task.ext.organism ?: "${meta.organism}"
     // Determine which input to use: prioritize reads, fallback to assembly if no reads
     def input_command
-    def use_assembly = false
-    if (meta.layout == 'paired_end'){
-            input_command = "--read1 ${reads[0]} --read2 ${reads[1]}"  // Paired-end reads
+    def prep_command = ''
+
+    if (meta.layout == 'paired_end') {
+        input_command = "--read1 ${reads[0]} --read2 ${reads[1]}"
     } else if (meta.layout == 'assembly') {
-        // If no reads, fallback to the assembly
-        use_assembly = true
-        fasta = assembly[0]
-        is_compressed = fasta.getName().endsWith('.gz')
-        fasta_name    = fasta.getName().replace('.gz', '')
-        input_command = "--assembly ${is_compressed ? fasta_name : fasta}"
+        def fasta = assembly[0]
+        def is_compressed = fasta.getName().endsWith('.gz')
+        def fasta_name = fasta.getName().replaceFirst(/\.gz$/, '')
+
+        if (is_compressed) {
+            prep_command = "gzip -dc ${fasta} > ${fasta_name}"
+            input_command = "--assembly ${fasta_name}"
+        } else {
+            input_command = "--assembly ${fasta}"
+        }
     } else {
         error "ERROR: Sample ${meta.id} does not have paired-end reads or assembly required by el_gato!"
     }
 
     """
-    if [ "${use_assembly}" = "true" ]; then
-        if [ "${is_compressed}" = "true" ]; then
-            gzip -dc ${fasta} > ${fasta_name}
-        fi
-    fi
+    ${prep_command}
 
     el_gato.py \\
         $args \\
