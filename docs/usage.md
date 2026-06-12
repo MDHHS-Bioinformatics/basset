@@ -191,40 +191,38 @@ For more details about the output files and reports, please refer to the [`Outpu
 
 * HICap may fail when no _cap_ is detected. Therefore, HICap errors are ignored. In these cases, you may see the following message:
 
-```bash
--[MDHHS-Bioinformatics/basset] Pipeline completed successfully, but with errored process(es)-
-[xxxx/yyyyy] NOTE: Process `BASSET:HICAP (<sample>)` terminated with an error exit status (1) -- Error is ignored
-```
+  ```bash
+  -[MDHHS-Bioinformatics/basset] Pipeline completed successfully, but with errored process(es)-
+  [xxxx/yyyyy] NOTE: Process `BASSET:HICAP (<sample>)` terminated with an error exit status (1) -- Error is ignored
+  ```
 
-If this occurs, HICAP results cannot be reported.
+  If this occurs, HICAP results cannot be reported.
 
-* When running BaSSET with Singularity or Apptainer on HPC systems, failures can occur when multiple organisms or samples start at the same time and Nextflow tries to pull the same container images concurrently. This can cause collisions in the container cache.
+* When running BaSSET with Singularity or Apptainer on HPC systems, the workflow may fail on the first run if multiple processes start at the same time and require different container images. In this situation, Nextflow may try to pull several images concurrently, which can lead to race conditions or incomplete files in the container cache.
 
-To avoid this, we recommend pre-pulling all required BaSSET container images before launching the workflow.
+  To avoid this, we recommend pre-pulling all required BaSSET container images before launching the workflow. Helper scripts are provided for both Apptainer and Singularity:
 
-For Apptainer:
+  - [`bin/prefetch_basset_containers_apptainer.sh`](./../bin/prefetch_basset_containers_apptainer.sh)
+  - [`bin/prefetch_basset_containers_singularity.sh`](./../bin/prefetch_basset_containers_singularity.sh)
 
-```bash
-bash bin/prefetch_basset_containers_apptainer.sh
-```
+  For Apptainer:
 
-For Singularity:
-```bash
-bash bin/prefetch_basset_containers_singularity.sh
-```
+  ```bash
+  export NXF_APPTAINER_CACHEDIR=/path/to/shared/nextflow/apptainer/cache
 
-Make sure the corresponding Nextflow cache directory is set before running the script, for example:
+  bash bin/prefetch_basset_containers_apptainer.sh
+  ```
+  
+  For Singularity:
+  ```bash
+  export NXF_SINGULARITY_CACHEDIR=/path/to/shared/nextflow/singularity/cache
 
-```bash
-export NXF_APPTAINER_CACHEDIR=/path/to/shared/nextflow/apptainer/cache
-```
+  bash bin/prefetch_basset_containers_singularity.sh
+  ```
 
-or:
-```bash
-export NXF_SINGULARITY_CACHEDIR=/path/to/shared/nextflow/singularity/cache
-```
+  The cache directory should be located on a shared filesystem that is accessible from all compute nodes. Nextflow recommends using a centralized cache directory for Apptainer/Singularity containers instead of relying on the default cache inside the workflow `work/` directory.
 
-Nextflow recommends using a centralized cache directory for Apptainer/Singularity containers rather than relying on the default work-directory cache, and Apptainer also supports APPTAINER_CACHEDIR for its own OCI/layer cache.
+  Note that `NXF_APPTAINER_CACHEDIR` controls where Nextflow stores Apptainer SIF images. Apptainer also supports `APPTAINER_CACHEDIR` for its own OCI/layer cache, which may be relevant when Apptainer itself is pulling or converting OCI images.
 
 # 🔁 Reproducibility
 
