@@ -8,5 +8,4 @@ testing*
 *.pyc
 python_notebooks/
 logs/
-*.sh
 *results*
