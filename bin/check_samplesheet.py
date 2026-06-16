@@ -54,6 +54,7 @@ class RowChecker:
         "shigella": "Shigella",
         "staphylococcus_aureus": "Staphylococcus_aureus",
         "streptococcus_pneumoniae": "Streptococcus_pneumoniae",
+        "streptococcus_dysgalactiae": "Streptococcus_dysgalactiae",
         "streptococcus_pyogenes": "Streptococcus_pyogenes",
         "vibrio_cholerae": "Vibrio_cholerae",
         "vibrio_parahaemolyticus": "Vibrio_parahaemolyticus",

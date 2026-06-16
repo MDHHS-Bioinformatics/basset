@@ -35,32 +35,33 @@ def get_master() {
     IMPORT LOCAL MODULES/SUBWORKFLOWS
 ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
 */
-include { ABRICATE                } from '../modules/local/abricate'
-include { AGRVATE                 } from '../modules/local/agrvate'
-include { ARIBA                   } from '../modules/local/ariba'
-include { ECTYPER                 } from '../modules/local/ectyper'
-include { EL_GATO                 } from '../modules/local/el_gato'
-include { EMMTYPER                } from '../modules/local/emmtyper'
-include { HICAP                   } from '../modules/local/hicap'
-include { KAPTIVE_ABAUMANNII      } from '../modules/local/kaptive_abaumannii'
-include { KAPTIVE_VCHOLERAE       } from '../modules/local/kaptive_vcholerae'
-include { KAPTIVE_VPARAH          } from '../modules/local/kaptive_vparah'
-include { KLEBORATE               } from '../modules/local/kleborate'
-include { LP_ABRICATE             } from '../modules/local/lp_abricate'
-include { LISSERO                 } from '../modules/local/lissero'
-include { MENINGOTYPE             } from '../modules/local/meningotype'
-include { NGMASTER                } from '../modules/local/ngmaster'
-include { PASTY                   } from '../modules/local/pasty'
-include { PBPTYPER                } from '../modules/local/pbptyper'
-include { SCCMEC                  } from '../modules/local/sccmec'
-include { SEQSERO2                } from '../modules/local/seqsero2'
-include { SEROBA                  } from '../modules/local/seroba'
-include { SHIGATYPER              } from '../modules/local/shigatyper'
-include { SHIGEIFINDER            } from '../modules/local/shigeifinder'
-include { SISTR                   } from '../modules/local/sistr'
-include { SPATYPER                } from '../modules/local/spatyper'
-include { BASSET_SUMMARY          } from '../modules/local/basset_summary'
-include { BASSET_MASTER           } from '../modules/local/basset_master'
+include { ABRICATE                                   } from '../modules/local/abricate'
+include { AGRVATE                                    } from '../modules/local/agrvate'
+include { ARIBA                                      } from '../modules/local/ariba'
+include { ECTYPER                                    } from '../modules/local/ectyper'
+include { EL_GATO                                    } from '../modules/local/el_gato'
+include { EMMTYPER as EMMTYPER_SPYOGENES             } from '../modules/local/emmtyper'
+include { EMMTYPER as EMMTYPER_SDYSGALACTIAE         } from '../modules/local/emmtyper'
+include { HICAP                                      } from '../modules/local/hicap'
+include { KAPTIVE_ABAUMANNII                         } from '../modules/local/kaptive_abaumannii'
+include { KAPTIVE_VCHOLERAE                          } from '../modules/local/kaptive_vcholerae'
+include { KAPTIVE_VPARAH                             } from '../modules/local/kaptive_vparah'
+include { KLEBORATE                                  } from '../modules/local/kleborate'
+include { LP_ABRICATE                                } from '../modules/local/lp_abricate'
+include { LISSERO                                    } from '../modules/local/lissero'
+include { MENINGOTYPE                                } from '../modules/local/meningotype'
+include { NGMASTER                                   } from '../modules/local/ngmaster'
+include { PASTY                                      } from '../modules/local/pasty'
+include { PBPTYPER                                   } from '../modules/local/pbptyper'
+include { SCCMEC                                     } from '../modules/local/sccmec'
+include { SEQSERO2                                   } from '../modules/local/seqsero2'
+include { SEROBA                                     } from '../modules/local/seroba'
+include { SHIGATYPER                                 } from '../modules/local/shigatyper'
+include { SHIGEIFINDER                               } from '../modules/local/shigeifinder'
+include { SISTR                                      } from '../modules/local/sistr'
+include { SPATYPER                                   } from '../modules/local/spatyper'
+include { BASSET_SUMMARY                             } from '../modules/local/basset_summary'
+include { BASSET_MASTER                              } from '../modules/local/basset_master'
 
 // SUBWORKFLOW: Consisting of a mix of local and nf-core/modules
 //
@@ -155,11 +156,17 @@ workflow BASSET {
     //
     // MODULE: Streptococcus pyogenes emm-typing
     //
-    EMMTYPER(
+    EMMTYPER_SPYOGENES(
         INPUT_CHECK.out.spyogenes_input_files
     )
-    ch_summaries = ch_summaries.mix(EMMTYPER.out.summary)
-    ch_versions = ch_versions.mix(EMMTYPER.out.versions.first())
+    ch_summaries = ch_summaries.mix(EMMTYPER_SPYOGENES.out.summary)
+    ch_versions = ch_versions.mix(EMMTYPER_SPYOGENES.out.versions.first())
+
+    EMMTYPER_SDYSGALACTIAE(
+        INPUT_CHECK.out.sdysgalactiae_input_files
+    )
+    ch_summaries = ch_summaries.mix(EMMTYPER_SDYSGALACTIAE.out.summary)
+    ch_versions = ch_versions.mix(EMMTYPER_SDYSGALACTIAE.out.versions.first())
 
     //
     // MODULE: Identify cap locus serotype and structure of Haemophilus influenzae assemblies

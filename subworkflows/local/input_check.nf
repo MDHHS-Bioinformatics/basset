@@ -102,6 +102,7 @@ workflow INPUT_CHECK {
             kpneumoniae          : meta.organism == 'Klebsiella_pneumoniae_complex'
             hinfluenzae          : meta.organism == 'Haemophilus_influenzae'
             saureus              : meta.organism == 'Staphylococcus_aureus'
+            sdysgalactiae        : meta.organism == 'Streptococcus_dysgalactiae'
             spyogenes            : meta.organism == 'Streptococcus_pyogenes'
             spneumoniae          : meta.organism == 'Streptococcus_pneumoniae'
             nmeningitidis        : meta.organism == 'Neisseria_meningitidis'
@@ -123,6 +124,7 @@ workflow INPUT_CHECK {
     kpneumoniae_input_files   = organism_inputs.kpneumoniae
     hinfluenzae_input_files   = organism_inputs.hinfluenzae
     saureus_input_files       = organism_inputs.saureus
+    sdysgalactiae_input_files = organism_inputs.sdysgalactiae
     spyogenes_input_files     = organism_inputs.spyogenes
     spneumoniae_input_files   = organism_inputs.spneumoniae
     nmeningitidis_input_files = organism_inputs.nmeningitidis
@@ -145,6 +147,7 @@ workflow INPUT_CHECK {
     saureus_input_files                        // channel: [ val(meta), [reads], assembly ]
     shigella_input_files                       // channel: [ val(meta), [reads], assembly ]
     spneumoniae_input_files                    // channel: [ val(meta), [reads], assembly ]
+    sdysgalactiae_input_files                  // channel: [ val(meta), [reads], assembly ]
     spyogenes_input_files                      // channel: [ val(meta), [reads], assembly ]
     vibrio_cholerae_input_files                // channel: [ val(meta), [reads], assembly ]
     vibrio_parahaemolyticus_input_files        // channel: [ val(meta), [reads], assembly ]
