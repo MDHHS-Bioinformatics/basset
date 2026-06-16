@@ -1,0 +1,33 @@
+cff-version: 1.2.0
+title: "BaSSeT: Bacterial Species-Specific Typing"
+message: "If you use this pipeline, please cite it as below."
+type: pipeline
+
+authors:
+  - family-names: Vasco
+    given-names: Karla
+  - family-names: Blankenship
+    given-names: Heather
+  - family-names: Miles-Jay
+    given-names: Arianna
+
+version: "1.0.0"
+date-released: 2026-05-01
+
+doi: 10.XXXX/zenodo.XXXXXX
+
+repository-code: "https://github.com/MDHHS-Bioinformatics/basset"
+url: "https://github.com/MDHHS-Bioinformatics/basset"
+
+keywords:
+  - bioinformatics
+  - public-health
+  - outbreak
+  - genomic-epidemiology
+  - bacteria
+  - epidemiology
+  - typing
+  - serotyping
+  - virulence
+
+license: MIT
