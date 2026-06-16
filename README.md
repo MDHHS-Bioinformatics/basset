@@ -54,7 +54,7 @@ For full workflow details check [`Workflow documentation`](docs/workflow.md)
 
 ### 1️⃣ Requirements
 
-* [`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#installation) (`>=22.10.1`)
+* [`Nextflow`](https://docs.seqera.io/nextflow/install) (`>=22.10.1`)
 * One container runtime:
   * [`Docker`](https://docs.docker.com/engine/installation/) (recommended for local runs)
   * [`Apptainer`](https://apptainer.org/docs/user/latest/) (recommended for HPC)
