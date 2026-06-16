@@ -67,7 +67,7 @@ Prepare a samplesheet (CSV) to define sample files and organisms:
 sample,fastq_1,fastq_2,assembly,organism
 SAMPLE_1,/path/S1_R1.fastq.gz,/path/S1_R2.fastq.gz,/path/S1.fasta,Escherichia_coli
 SAMPLE_2,/path/S2_R1.fastq.gz,/path/S2_R2.fastq.gz,/path/S2.fasta,Salmonella
-SAMPLE_3,/path/S3.fastq.gz,/path/S3.fasta,Shigella
+SAMPLE_3,/path/S3.fastq.gz,,/path/S3.fasta,Shigella
 SAMPLE_4,,,/path/S4.fasta,Pseudomonas_aeruginosa
 SAMPLE_5,/path/S5_R1.fastq.gz,/path/S5_R2.fastq.gz,/path/S5.fasta,Legionella_pneumophila
 
@@ -110,6 +110,7 @@ SAMPLE_5,/path/S5_R1.fastq.gz,/path/S5_R2.fastq.gz,/path/S5.fasta,Legionella_pne
 | _Staphylococcus aureus_           | [`AgrVATE`](https://github.com/VishnuRaghuram94/AgrVATE)              | _agr_ locus typing                                                                                 | -                                           | -                                           | ✔️     |
 | _Staphylococcus aureus_           | [`sccmec`](https://github.com/rpetit3/sccmec)                         | SCCmec cassette typing                                                                           | -                                           | -                                           | ✔️     |
 | _Staphylococcus aureus_           | [`spaTyper`](https://github.com/HCGB-IGTP/spaTyper)                   | _spa_ repeat typing                                                                                | -                                           | -                                           | ✔️     |
+| _Streptococcus dysgalactiae_          | [`emmtyper`](https://github.com/MDU-PHL/emmtyper)                     | _emm_ type assignment                                                                              | -                                           | -                                           | ✔️     |
 | _Streptococcus pneumoniae_        | [`pbptyper`](https://github.com/rpetit3/pbptyper)                     | PBP typing                                                                                       | -                                           | -                                           | ✔️     |
 | _Streptococcus pneumoniae_        | [`SeroBA`](https://github.com/sanger-pathogens/seroba)                | Serotyping via _cps_ locus                                                                         | ✔️     | ✔️     | -                                           |
 | _Streptococcus pyogenes_          | [`emmtyper`](https://github.com/MDU-PHL/emmtyper)                     | _emm_ type assignment                                                                              | -                                           | -                                           | ✔️     |
@@ -145,7 +146,7 @@ nextflow run MDHHS-Bioinformatics/basset \
   --outdir basset_results
 ```
 
-For advance run:
+For advance run including species-specific analyses and ABRicate:
 ```bash
 nextflow run MDHHS-Bioinformatics/basset \
   -profile apptainer \

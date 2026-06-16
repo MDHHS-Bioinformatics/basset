@@ -62,12 +62,13 @@ The samplesheet must contain **5 columns** with the following headers.
 > [!IMPORTANT]
 > All columns must still be present in the CSV file.
 
-> [!IMPORTANT]
-> All samples within a run must use the same sequencing format if using `--ont`. The only tools that accept ONT as input are `ECTyper`, `SeqSero2` and `ShigaTyper`.
+>[!IMPORTANT]
+> - Most analyses require assemblies as input. However, tools such as [`el_gato`](https://github.com/CDCgov/el_gato) and [`SeqSero2`](https://github.com/denglab/SeqSero2) may provide more accurate results when reads are supplied.
+> - Reads are required for [`ShigaTyper`](https://github.com/CFSAN-Biostatistics/shigatyper), [`SeroBA`](https://github.com/sanger-pathogens/seroba), and [`ARIBA`](https://github.com/sanger-pathogens/ariba). If reads are not provided for a sample, these analyses will be skipped for that sample.
 
-Most analyses require assemblies as input, though tools like [`el_gato`](https://github.com/CDCgov/el_gato) and [`SeqSero2`](https://github.com/denglab/SeqSero2) provide more accurate results with reads. Reads are mandatory for [`ShigaTyper`](https://github.com/cfsan-biostatistics/shigatyper), [`SeroBA`](https://github.com/sanger-pathogens/seroba) and [ARIBA](https://github.com/sanger-pathogens/ariba).
+>[!NOTE]
+>If the reads are from ONT, add the flag `--ont` when running your analyses. ONT reads are only supported for [`ECTyper`](https://github.com/phac-nml/ecoli_serotyping), [`SeqSero2`](https://github.com/denglab/SeqSero2), and [`ShigaTyper`](https://github.com/CFSAN-Biostatistics/shigatyper)
 
-If the reads are from ONT, add the flag `--ont` when running your analyses.
 
 ## Example samplesheet
 
@@ -102,6 +103,7 @@ An example samplesheet is available in [`assets/samplesheet.csv`](../assets/samp
 | _Staphylococcus aureus_           | [`AgrVATE`](https://github.com/VishnuRaghuram94/AgrVATE)              | _agr_ locus typing                                                                                 | -                                           | -                                           | ✔️     |
 | _Staphylococcus aureus_           | [`sccmec`](https://github.com/rpetit3/sccmec)                         | SCCmec cassette typing                                                                           | -                                           | -                                           | ✔️     |
 | _Staphylococcus aureus_           | [`spaTyper`](https://github.com/HCGB-IGTP/spaTyper)                   | _spa_ repeat typing                                                                                | -                                           | -                                           | ✔️     |
+| _Streptococcus dysgalactiae_          | [`emmtyper`](https://github.com/MDU-PHL/emmtyper)                     | _emm_ type assignment                                                                              | -                                           | -                                           | ✔️     |
 | _Streptococcus pneumoniae_        | [`pbptyper`](https://github.com/rpetit3/pbptyper)                     | PBP typing                                                                                       | -                                           | -                                           | ✔️     |
 | _Streptococcus pneumoniae_        | [`SeroBA`](https://github.com/sanger-pathogens/seroba)                | Serotyping via _cps_ locus                                                                         | ✔️     | ✔️     | -                                           |
 | _Streptococcus pyogenes_          | [`emmtyper`](https://github.com/MDU-PHL/emmtyper)                     | _emm_ type assignment                                                                              | -                                           | -                                           | ✔️     |
