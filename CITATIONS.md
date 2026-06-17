@@ -20,7 +20,7 @@
 
 - [Kaptive database for _Vibrio parahaemolyticus_ O/K genotyping](https://github.com/aldertzomer/vibrio_parahaemolyticus_genomoserotyping)
 
-> van der Graaf-Van Bloois, Linda, Hongyou Chen, Jaap A. Wagenaar, and Aldert L. Zomer. "Development of Kaptive databases for Vibrio parahaemolyticus O-and K-antigen genotyping." Microbial genomics 9, no. 5 (2023): 001007.
+  > van der Graaf-Van Bloois, Linda, Hongyou Chen, Jaap A. Wagenaar, and Aldert L. Zomer. "Development of Kaptive databases for Vibrio parahaemolyticus O-and K-antigen genotyping." Microbial genomics 9, no. 5 (2023): 001007.
 
 - [VicPred _Vibrio cholerae_ O-antigen database](https://doi.org/10.3389/fmicb.2021.691895)
 
@@ -48,15 +48,18 @@
 
   > If you publish the results of Abricate please cite both the software _and_
   the appropriate database you used with `--db`
-    > * NCBI AMRFinderPlus - [doi:10.1038/s41598-021-91456-0](https://pubmed.ncbi.nlm.nih.gov/34135355/)
-    > * CARD - [doi:10.1093/nar/gkac920](https://pubmed.ncbi.nlm.nih.gov/36263822/)
-    > * Resfinder - [doi:10.1093/jac/dkaa345](https://pubmed.ncbi.nlm.nih.gov/32780112/)
-    > * ARG-ANNOT - [doi:10.1128/AAC.01310-13](https://www.ncbi.nlm.nih.gov/pubmed/24145532)
-    > * VFDBu - [doi:10.1093/nar/gkv1239](https://www.ncbi.nlm.nih.gov/pubmed/26578559)
-    > * PlasmidFinder - [doi:10.1128/AAC.02412-14](https://www.ncbi.nlm.nih.gov/pubmed/24777092)
-    > * EcOH - [doi:10.1099/mgen.0.000064](https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5343136/)
-    > * MEGARES 3.00 - [doi:10.1093/nar/gkac1047](https://pubmed.ncbi.nlm.nih.gov/36382407/)
-    > * UPEC/ExPEC VF DB -[Forde Lab github](https://github.com/FordeGenomics/ST167_Code/blob/main/UPEC-ExPEC_VF/UPEC_ExPEC_VF.tsv)
+    > - [argannot](https://doi.org/10.1128/aac.01310-13)
+    > - [bacmet2](https://doi.org/10.1093/nar/gkt1252)
+    > - [card](https://doi.org/10.1093/nar/gkac920)
+    > - [ecoh](https://doi.org/10.1099/mgen.0.000064)
+    > - [ecoli_vf](https://github.com/phac-nml/ecoli_vf)
+    > - [megares](https://doi.org/10.1093/nar/gkac1047)
+    > - [ncbi](https://doi.org/10.1038/s41598-021-91456-0)
+    > - [plasmidfinder](https://doi.org/10.1128/AAC.02412-14)
+    > - [resfinder](https://doi.org/10.1093/jac/dkaa345)
+    > - [upec_expec_vf](https://github.com/FordeGenomics/ST167_Code/blob/main/UPEC-ExPEC_VF/UPEC_ExPEC_VF.tsv)
+    > - [vfdb](https://doi.org/10.1093/nar/gkae968)
+    > - [victors](https://doi.org/10.1093/nar/gky999)
 
 - [ReporType databases](https://github.com/insapathogenomics/ReporType/tree/main/databases)
 
@@ -68,19 +71,19 @@
 
 - [NGMASTER](https://github.com/MDU-PHL/ngmaster)
 
-  > Kwong, Jason C., Anders Gonçalves da Silva, Kristin Dyet, Deborah A. Williamson, Timothy P. Stinear, Benjamin P. Howden, and Torsten Seemann. "NGMASTER: in silico multi-antigen sequence typing for Neisseria gonorrhoeae." Microbial Genomics 2, no. 8 (2016): e000076.
+  > Kwong, Jason C., Anders Gonçalves da Silva, Kristin Dyet, Deborah A. Williamson, Timothy P. Stinear, Benjamin P. Howden, and Torsten Seemann. "NGMASTER: in silico multi-antigen sequence typing for _Neisseria gonorrhoeae_." Microbial Genomics 2, no. 8 (2016): e000076.
 
 - [meningotype](https://github.com/MDU-PHL/meningotype)
 
-  > Kwong Jason, Stroehlein Andreas, Anders Gonçalves da Silva & Torsten Seemann. “meningotype: in silico typing for Neisseria meningitidis.” GitHub. https://github.com/MDU-PHL/meningotype
+  > Kwong Jason, Stroehlein Andreas, Anders Gonçalves da Silva & Torsten Seemann. “meningotype: in silico typing for _Neisseria meningitidis_.” GitHub. https://github.com/MDU-PHL/meningotype
 
 - [Pasty](https://github.com/rpetit3/pasty)
 
-  > Petit, R. A. III “pasty: in silico serogrouping of Pseudomonas aeruginosa isolates.” GitHub. https://github.com/rpetit3/pasty
+  > Petit, R. A. III “pasty: in silico serogrouping of _Pseudomonas aeruginosa_ isolates.” GitHub. https://github.com/rpetit3/pasty
 
 - [SeqSero2](https://github.com/denglab/SeqSero2)
 
-  > Zhang, Shaokang, Hendrik C. Den Bakker, Shaoting Li, Jessica Chen, Blake A. Dinsmore, Charlotte Lane, A. C. Lauer, Patricia I. Fields, and Xiangyu Deng. "SeqSero2: rapid and improved Salmonella serotype determination using whole-genome sequencing data." Applied and environmental microbiology 85, no. 23 (2019): e01746-19.
+  > Zhang, Shaokang, Hendrik C. Den Bakker, Shaoting Li, Jessica Chen, Blake A. Dinsmore, Charlotte Lane, A. C. Lauer, Patricia I. Fields, and Xiangyu Deng. "SeqSero2: rapid and improved _Salmonella_ serotype determination using whole-genome sequencing data." Applied and environmental microbiology 85, no. 23 (2019): e01746-19.
 
 - [SISTR](https://github.com/phac-nml/sistr_cmd)
 

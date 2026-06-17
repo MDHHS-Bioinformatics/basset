@@ -9,23 +9,57 @@ Detailed descriptions of pipeline parameters can be found in
 
 Install the following software:
 
-* [`Nextflow`](https://www.nextflow.io/docs/latest/getstarted.html#installation) (≥ 22.10.1)
+* [`Nextflow`](https://docs.seqera.io/nextflow/install) (≥ 22.10.1)
 * A container runtime:
 
   * [`Docker`](https://docs.docker.com/engine/installation/) (recommended for local runs)
-  * [`Singularity`](https://www.sylabs.io/guides/3.0/user-guide/)
   * [`Apptainer`](https://apptainer.org/docs/user/latest/) (recommended for HPC)
+  * [`Singularity`](https://www.sylabs.io/guides/3.0/user-guide/)
 
-> [!NOTE]  
-> If using **Singularity** set `NXF_SINGULARITY_CACHEDIR` (or `singularity.cacheDir`) to reuse images later. For example: 
-> ```bash
-> export NXF_SINGULARITY_CACHEDIR="/path/to/singularity_cache"
-> ``````
->
-> If using **Apptainer** set `NXF_APPTAINER_CACHEDIR` (or `apptainer.cacheDir`) to reuse images later. For example: 
-> ```bash
-> export NXF_APPTAINER_CACHEDIR="/path/to/apptainer_cache"
-> ``````
+### Container cache setup
+
+For Apptainer or Singularity, use a persistent shared cache directory so container images can be reused across runs and accessed by all compute nodes.
+
+For Apptainer:
+
+```bash
+export NXF_APPTAINER_CACHEDIR=/path/to/shared/nextflow/apptainer/cache
+```
+
+For Singularity:
+
+```bash
+export NXF_SINGULARITY_CACHEDIR=/path/to/shared/nextflow/singularity/cache
+```
+
+You can also set these paths in your Nextflow configuration using `apptainer.cacheDir` or `singularity.cacheDir`.
+
+### Optional: prefetch containers
+
+For Apptainer and Singularity users, we recommend pre-pulling all required BaSSeT container images before launching the workflow. This helps avoid issues caused by multiple Nextflow tasks pulling images concurrently, such as race conditions or incomplete cache files.
+
+Helper scripts are provided:
+
+* [`bin/prefetch_basset_containers_apptainer.sh`](./../bin/prefetch_basset_containers_apptainer.sh)
+* [`bin/prefetch_basset_containers_singularity.sh`](./../bin/prefetch_basset_containers_singularity.sh)
+
+For Apptainer:
+
+```bash
+export NXF_APPTAINER_CACHEDIR=/path/to/shared/nextflow/apptainer/cache
+bash prefetch_basset_containers_apptainer.sh
+```
+
+For Singularity:
+
+```bash
+export NXF_SINGULARITY_CACHEDIR=/path/to/shared/nextflow/singularity/cache
+bash prefetch_basset_containers_singularity.sh
+```
+
+> [!NOTE]
+> `NXF_APPTAINER_CACHEDIR` and `NXF_SINGULARITY_CACHEDIR` control where Nextflow stores SIF images. Apptainer and Singularity also have their own OCI/layer caches, such as `APPTAINER_CACHEDIR` and `SINGULARITY_CACHEDIR`, which are mainly used while pulling or converting OCI images.
+
 
 ---
 
@@ -116,18 +150,18 @@ An example samplesheet is available in [`assets/samplesheet.csv`](../assets/samp
 
 | Database        | Description                                              | Gene Types                           |
 |-----------------|----------------------------------------------------------|---------------------------------------|
-| [argannot](https://github.com/katholt/argannot)                      | Antibiotic resistance gene annotation                    | AMR genes                              |
-| [bacmet2](https://bacmet.biomedicine.gu.se/)                        | Bacterial biocide & metal resistance genes               | Metal/biocide resistance               |
-| [card](https://card.mcmaster.ca/)                                | Comprehensive Antibiotic Resistance Database             | AMR genes                              |
-| [ecoh](https://github.com/phac-nml/ecoli_vf)                     | E. coli virulence genes (subset)                         | Virulence factors                      |
+| [argannot](https://doi.org/10.1128/aac.01310-13)                      | Antibiotic resistance gene annotation                    | AMR genes                              |
+| [bacmet2](https://doi.org/10.1093/nar/gkt1252)                        | Bacterial biocide & metal resistance genes               | Metal/biocide resistance               |
+| [card](https://doi.org/10.1093/nar/gkac920)                                | Comprehensive Antibiotic Resistance Database             | AMR genes                              |
+| [ecoh](https://doi.org/10.1099/mgen.0.000064)                     | *E. coli* virulence genes (subset)                         | Virulence factors                      |
 | [ecoli_vf](https://github.com/phac-nml/ecoli_vf)                     | Expanded *E. coli* virulence gene set                    | Virulence factors                      |
-| [megares](https://megares.meglab.org/)                            | Antibiotic resistance ontology                            | AMR genes                              |
-| [ncbi](https://github.com/tseemann/abricate/tree/master/db/ncbi) | NCBI AMRFinder+ gene set                                 | AMR genes                              |
-| [plasmidfinder](https://bitbucket.org/genomicepidemiology/plasmidfinder) | Plasmid replicon typing                                  | Plasmid replicons                      |
-| [resfinder](https://github.com/cadwaller/resfinder)                  | Resistance gene detection                                 | AMR genes                              |
-| [upec_expec_vf](https://github.com/phac-nml/ecoli_vf)                     | UPEC/ExPEC virulence markers                             | Virulence factors                      |
-| [vfdb](http://www.mgc.ac.cn/VFs/)                               | Virulence Factor Database                                | Virulence genes                        |
-| [victors](https://www.phidias.us/victors/)                         | Bacterial virulence database                             | Virulence genes                        |      
+| [megares](https://doi.org/10.1093/nar/gkac1047)                            | Antibiotic resistance ontology                            | AMR genes                              |
+| [ncbi](https://doi.org/10.1038/s41598-021-91456-0) | NCBI AMRFinder+ gene set                                 | AMR genes                              |
+| [plasmidfinder](https://doi.org/10.1128/AAC.02412-14) | Plasmid replicon typing                                  | Plasmid replicons                      |
+| [resfinder](https://doi.org/10.1093/jac/dkaa345)                  | Resistance gene detection                                 | AMR genes                              |
+| [upec_expec_vf](https://github.com/FordeGenomics/ST167_Code/blob/main/UPEC-ExPEC_VF/UPEC_ExPEC_VF.tsv)                     | UPEC/ExPEC virulence markers                             | Virulence factors                      |
+| [vfdb](https://doi.org/10.1093/nar/gkae968)                               | Virulence Factor Database                                | Virulence genes                        |
+| [victors](https://doi.org/10.1093/nar/gky999)                         | Bacterial virulence database                             | Virulence genes                        |      
 
 
 ---
@@ -200,31 +234,6 @@ For more details about the output files and reports, please refer to the [`Outpu
 
   If this occurs, HICAP results cannot be reported.
 
-* When running BaSSET with Singularity or Apptainer on HPC systems, the workflow may fail on the first run if multiple processes start at the same time and require different container images. In this situation, Nextflow may try to pull several images concurrently, which can lead to race conditions or incomplete files in the container cache.
-
-  To avoid this, we recommend pre-pulling all required BaSSET container images before launching the workflow. Helper scripts are provided for both Apptainer and Singularity:
-
-  - [`bin/prefetch_basset_containers_apptainer.sh`](./../bin/prefetch_basset_containers_apptainer.sh)
-  - [`bin/prefetch_basset_containers_singularity.sh`](./../bin/prefetch_basset_containers_singularity.sh)
-
-  For Apptainer:
-
-  ```bash
-  export NXF_APPTAINER_CACHEDIR=/path/to/shared/nextflow/apptainer/cache
-
-  bash bin/prefetch_basset_containers_apptainer.sh
-  ```
-  
-  For Singularity:
-  ```bash
-  export NXF_SINGULARITY_CACHEDIR=/path/to/shared/nextflow/singularity/cache
-
-  bash bin/prefetch_basset_containers_singularity.sh
-  ```
-
-  The cache directory should be located on a shared filesystem that is accessible from all compute nodes. Nextflow recommends using a centralized cache directory for Apptainer/Singularity containers instead of relying on the default cache inside the workflow `work/` directory.
-
-  Note that `NXF_APPTAINER_CACHEDIR` controls where Nextflow stores Apptainer SIF images. Apptainer also supports `APPTAINER_CACHEDIR` for its own OCI/layer cache, which may be relevant when Apptainer itself is pulling or converting OCI images.
 
 # 🔁 Reproducibility
 

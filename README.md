@@ -123,18 +123,18 @@ SAMPLE_5,/path/S5_R1.fastq.gz,/path/S5_R2.fastq.gz,/path/S5.fasta,Legionella_pne
 
 | Database        | Description                                              | Gene Types                           |
 |-----------------|----------------------------------------------------------|---------------------------------------|
-| [argannot](https://github.com/katholt/argannot)                      | Antibiotic resistance gene annotation                    | AMR genes                              |
-| [bacmet2](https://bacmet.biomedicine.gu.se/)                        | Bacterial biocide & metal resistance genes               | Metal/biocide resistance               |
-| [card](https://card.mcmaster.ca/)                                | Comprehensive Antibiotic Resistance Database             | AMR genes                              |
-| [ecoh](https://github.com/phac-nml/ecoli_vf)                     | E. coli virulence genes (subset)                         | Virulence factors                      |
+| [argannot](https://doi.org/10.1128/aac.01310-13)                      | Antibiotic resistance gene annotation                    | AMR genes                              |
+| [bacmet2](https://doi.org/10.1093/nar/gkt1252)                        | Bacterial biocide & metal resistance genes               | Metal/biocide resistance               |
+| [card](https://doi.org/10.1093/nar/gkac920)                                | Comprehensive Antibiotic Resistance Database             | AMR genes                              |
+| [ecoh](https://doi.org/10.1099/mgen.0.000064)                     | *E. coli* virulence genes (subset)                         | Virulence factors                      |
 | [ecoli_vf](https://github.com/phac-nml/ecoli_vf)                     | Expanded *E. coli* virulence gene set                    | Virulence factors                      |
-| [megares](https://megares.meglab.org/)                            | Antibiotic resistance ontology                            | AMR genes                              |
-| [ncbi](https://github.com/tseemann/abricate/tree/master/db/ncbi) | NCBI AMRFinder+ gene set                                 | AMR genes                              |
-| [plasmidfinder](https://bitbucket.org/genomicepidemiology/plasmidfinder) | Plasmid replicon typing                                  | Plasmid replicons                      |
-| [resfinder](https://github.com/cadwaller/resfinder)                  | Resistance gene detection                                 | AMR genes                              |
-| [upec_expec_vf](https://github.com/phac-nml/ecoli_vf)                     | UPEC/ExPEC virulence markers                             | Virulence factors                      |
-| [vfdb](http://www.mgc.ac.cn/VFs/)                               | Virulence Factor Database                                | Virulence genes                        |
-| [victors](https://www.phidias.us/victors/)                         | Bacterial virulence database                             | Virulence genes                        |      
+| [megares](https://doi.org/10.1093/nar/gkac1047)                            | Antibiotic resistance ontology                            | AMR genes                              |
+| [ncbi](https://doi.org/10.1038/s41598-021-91456-0) | NCBI AMRFinder+ gene set                                 | AMR genes                              |
+| [plasmidfinder](https://doi.org/10.1128/AAC.02412-14) | Plasmid replicon typing                                  | Plasmid replicons                      |
+| [resfinder](https://doi.org/10.1093/jac/dkaa345)                  | Resistance gene detection                                 | AMR genes                              |
+| [upec_expec_vf](https://github.com/FordeGenomics/ST167_Code/blob/main/UPEC-ExPEC_VF/UPEC_ExPEC_VF.tsv)                     | UPEC/ExPEC virulence markers                             | Virulence factors                      |
+| [vfdb](https://doi.org/10.1093/nar/gkae968)                               | Virulence Factor Database                                | Virulence genes                        |
+| [victors](https://doi.org/10.1093/nar/gky999)                         | Bacterial virulence database                             | Virulence genes                        |      
 
 ### 3️⃣ Run
 Now, you can run the pipeline using:
