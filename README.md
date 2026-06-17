@@ -187,7 +187,7 @@ For more details about the output files and reports, please refer to the [`Outpu
 
 ## 👥 Credits
 
-BaSSeT was built and is maintained by the Genomics Analysis Unit at the Michigan Department of Health & Human Services (MDHHS) Bureau of Laboratories. This pipeline was developed by [Karla Vasco](https://github.com/vascokarla) using the nf-core template.
+BaSSeT was built and is maintained by the Genomic Analysis Unit at the Michigan Department of Health & Human Services (MDHHS) Bureau of Laboratories. This pipeline was developed by [Karla Vasco](https://github.com/vascokarla) using the nf-core template.
 
 Additional conceptual guidance and scientific input were provided by [Arianna Miles-Jay](https://github.com/amilesj) and [Heather Blankenship](https://github.com/HeatherBlankenship).
 
@@ -198,7 +198,7 @@ Contributions, issues, and pull requests are welcome! If you would like to contr
 
 If you use BaSSeT for your analysis, please cite the following doi:
 
-Vasco K., Miles-Jay A. & Blankenship H. (2026). 
+Vasco K., Blankenship H. & Miles-Jay A. (2026). 
 MDHHS-Bioinformatics/basset: v1.0.0 (v1.0.0). 
 Zenodo. https://doi.org/XX.XXX/zenodo.XXXX
 
