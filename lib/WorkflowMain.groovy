@@ -10,7 +10,7 @@ class WorkflowMain {
     public static String citation(workflow) {
         return "If you use MDHHS-Bioinformatics/basset for your analysis please cite:\n\n" +
             "* The pipeline\n" +
-            //"  https://doi.org/10.5281/zenodo.XXXXXXX\n\n" +
+            "  https://doi.org/10.5281/zenodo.20856443\n\n" +
             "* Software dependencies\n" +
             "  https://github.com/MDHHS-Bioinformatics/basset/blob/main/CITATIONS.md"
     }
