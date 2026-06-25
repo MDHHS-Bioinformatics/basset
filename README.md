@@ -16,7 +16,7 @@
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](LICENSE)
 [![GitHub release](https://img.shields.io/github/v/release/MDHHS-Bioinformatics/basset)](https://github.com/MDHHS-Bioinformatics/basset/releases)
 ![Last Commit](https://img.shields.io/github/last-commit/MDHHS-Bioinformatics/basset)
-[![DOI](https://zenodo.org/badge/DOI/xxxxx.svg)](...)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.20856443.svg)](https://doi.org/10.5281/zenodo.20856443)
 
 **BaSSeT** (Bacterial Species-Specific Typing) is a bioinformatics pipeline for species-specific typing of bacteria. It takes a samplesheet with reads (FASTQ) and assembly (FASTA) files of multiple isolates from different organisms; performs species-specific typing analysis, produces a summary report per batch and combines new and prior results into a master results file.
 
@@ -200,7 +200,7 @@ If you use BaSSeT for your analysis, please cite the following doi:
 
 Vasco K., Blankenship H. & Miles-Jay A. (2026). 
 MDHHS-Bioinformatics/basset: v1.0.0 (v1.0.0). 
-Zenodo. https://doi.org/XX.XXX/zenodo.XXXX
+Zenodo. https://doi.org/10.5281/zenodo.20856443
 
 An extensive list of references for the tools used by the pipeline can be found in [`CITATIONS.md`](CITATIONS.md).
 
