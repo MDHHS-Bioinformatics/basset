@@ -182,7 +182,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 | `<sample>_kaptive_k.tsv`   | K locus typing       |
 | `<sample>_kaptive_o.tsv` | O locus typing |
 | `<sample>_kaptive_oc.tsv` | OC locus typing |
-| `<sample>_kaptive_summary.tsv` | BaSSet-formated results      |
+| `<sample>_kaptive_summary.tsv` | BaSSet-formatted results      |
 
 </details>
 
@@ -198,7 +198,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 | --------------------------------- | --------------------- |
 | `<sample>_ectyper_blastn_output_alleles.txt`      | Hits of the O and H antigen database |
 | `<sample>_ectyper_output.tsv`      | Main report |
-| `<sample>_ectyper_summary.tsv` | BaSSet-formated results   |
+| `<sample>_ectyper_summary.tsv` | BaSSet-formatted results   |
 | `<sample>_ectyper.log`      | Log messages |
 
 </details>
@@ -214,7 +214,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 | File                                                      | Description                                                                                               |
 | --------------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
 | `<sample>_hicap_output.tsv`                 | detailed summary information                              |
-| `<sample>_hicap_summary.tsv`                   |  BaSSet-formated results |
+| `<sample>_hicap_summary.tsv`                   |  BaSSet-formatted results |
 | `<sample>_hicap.gbk`                      | genbank file with sequence marked up with _cap_ locus annotations                              |
 | `<sample>_hicap.svg`                      | visual representation of the annotated _cap_ locus  |
 </details>
@@ -238,7 +238,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 | File                              | Description                 |
 | --------------------------------- | --------------------------- |
 | `<sample>_kleborate_output.tsv`   | _Klebsiella_ typing results |
-| `<sample>_kleborate_summary.tsv`  | BaSSet-formated results       |
+| `<sample>_kleborate_summary.tsv`  | BaSSet-formatted results       |
 
 </details>
 
@@ -252,10 +252,10 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_elgato_summary.tsv` | BaSSet-formated results |
+| `<sample>_elgato_summary.tsv` | BaSSet-formatted results |
 | `<sample>_elgato_intermediate_outputs.txt` | Log messages of intermediate analyses |
 | `<sample>_elgato_possible_mlsts.txt` | All possible ST profiles in case multiple possible alleles are identified for any ST loci |
-| `<sample>_elgato_repot.json` | Results as JSON file which can be used to generate a PDF report |
+| `<sample>_elgato_report.json` | Results as JSON file which can be used to generate a PDF report |
 | `<sample>_elgato_run.log` | Detailed log |
 
 </details>
@@ -270,7 +270,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_abricate_lp_summary.tsv` | BaSSet-formated results |
+| `<sample>_abricate_lp_summary.tsv` | BaSSet-formatted results |
 | `<sample>_abricate_lp_serogroup.tsv` | ABRicate results for *wzm*/*wzt* alleles |
 | `<sample>_abricate_lp_subspecies.tsv` | ABRicate results for _Legionella pneumophila_ subsepecies |
 
@@ -286,8 +286,8 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_lissero_summary.tsv` | BaSSet-formated results |
-| `<sample>_lissero_output.txt` | LisSero output |
+| `<sample>_lissero_summary.tsv` | BaSSet-formatted results |
+| `<sample>_lissero_output.tsv` | LisSero output |
 
 </details>
 
@@ -301,8 +301,8 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_ngmaster_summary.tsv` | BaSSet-formated results |
-| `<sample>_ngmaster_output.txt` | NGMASTER output |
+| `<sample>_ngmaster_summary.tsv` | BaSSet-formatted results |
+| `<sample>_ngmaster_output.tsv` | NGMASTER output |
 
 </details>
 
@@ -316,8 +316,8 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_meningotype_summary.tsv` | BaSSet-formated results |
-| `<sample>_meningotype_output.txt` | meningotype output |
+| `<sample>_meningotype_summary.tsv` | BaSSet-formatted results |
+| `<sample>_meningotype_output.tsv` | meningotype output |
 
 </details>
 
@@ -331,8 +331,8 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_pasty_summary.tsv` | BaSSet-formated results |
-| `<sample>_pasty_output.txt` | Pasty output with the predicted serogroup |
+| `<sample>_pasty_summary.tsv` | BaSSet-formatted results |
+| `<sample>_pasty_output.tsv` | Pasty output with the predicted serogroup |
 | `<sample>_pasty.blastn.tsv` | A tab-delimited file of all blast hits |
 | `<sample>_pasty.details.tsv` | A tab-delimited file with details for each serogroup |
 
@@ -348,7 +348,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_seqsero2_summary.tsv` | BaSSet-formated results |
+| `<sample>_seqsero2_summary.tsv` | BaSSet-formatted results |
 | `<sample>_SeqSero_log.txt` | Blast results |
 | `<sample>_SeqSero_result.tsv` | SeqSero results as tab-delimited file |
 | `<sample>_SeqSero_result.txt` | SeqSero results as txt file |
@@ -365,7 +365,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_sistr_summary.tsv` | BaSSet-formated results |
+| `<sample>_sistr_summary.tsv` | BaSSet-formatted results |
 | `<sample>_sistr_output.csv` | SISTR results |
 
 </details>
@@ -380,7 +380,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_shigatyper_summary.tsv` | BaSSet-formated results |
+| `<sample>_shigatyper_summary.tsv` | BaSSet-formatted results |
 | `<sample>_shigatyper_output.tsv` | ShigaTyper results |
 | `<sample>_shigatyper_hits.tsv` | Statistics about each individual gene hit |
 
@@ -396,7 +396,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_shigeifinder_summary.tsv` | BaSSet-formated results |
+| `<sample>_shigeifinder_summary.tsv` | BaSSet-formatted results |
 | `<sample>_shigeifinder_output.tsv` | ShigEiFinder results |
 
 </details>
@@ -411,7 +411,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_agravate_summary.tsv` | BaSSet-formated results |
+| `<sample>_agravate_summary.tsv` | BaSSet-formatted results |
 | `<sample>_agravate_output.tsv` | AgrVATE results |
 | `<sample>_agravate_agr_gp.tab` | AgrVATE blast results |
 
@@ -427,7 +427,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_sccmec_summary.tsv` | BaSSet-formated results |
+| `<sample>_sccmec_summary.tsv` | BaSSet-formatted results |
 | `<sample>_sccmec_output.tsv` | sccmec results with the predicted type |
 | `<sample>_sccmec.regions.blastn.tsv` | A tab-delimited file of all full cassette blast hits |
 | `<sample>_sccmec.regions.details.tsv` | A tab-delimited file with details for each type based on targets |
@@ -446,7 +446,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_spatyper_summary.tsv` | BaSSet-formated results |
+| `<sample>_spatyper_summary.tsv` | BaSSet-formatted results |
 | `<sample>_spatyper_output.tsv` | spaTyper results with the predicted type |
 
 </details>
@@ -461,7 +461,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_pbptyper_summary.tsv` | BaSSet-formated results |
+| `<sample>_pbptyper_summary.tsv` | BaSSet-formatted results |
 | `<sample>_pbptyper_output.tsv` | pbptyper results with the predicted type |
 | `<sample>_pbptyper_tblastn.tsv` | blast hits |
 
@@ -477,7 +477,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_seroba_summary.tsv` | BaSSet-formated results |
+| `<sample>_seroba_summary.tsv` | BaSSet-formatted results |
 | `<sample>_seroba_output.csv` | seroba results with the predicted type |
 
 </details>
@@ -492,7 +492,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_emmtyper_summary.tsv` | BaSSet-formated results |
+| `<sample>_emmtyper_summary.tsv` | BaSSet-formatted results |
 | `<sample>_emmtyper_output.tsv` | emmtyper results with the predicted type |
 
 </details>
@@ -507,7 +507,7 @@ Detailed tool outputs are stored in the corresponding organism subdirectories.
 
 | File                         | Description                  |
 | ---------------------------- | ---------------------------- |
-| `<sample>_ariba_summary.tsv` | BaSSet-formated results |
+| `<sample>_ariba_summary.tsv` | BaSSet-formatted results |
 | `<sample>_ariba_output.tsv` | ARIBA results for the detected virulence genes |
 
 </details>

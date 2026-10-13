@@ -30,7 +30,7 @@ pull_image 'docker://quay.io/biocontainers/pandas@sha256:509adc4983db6c608fa516b
 
 pull_image 'docker://quay.io/biocontainers/ectyper@sha256:eb98dad0da8a8dbf8864ab724aa51bd59db1a5a80705cadb9c6e0a834ab4ba85' 'quay.io-biocontainers-ectyper@sha256-eb98dad0da8a8dbf8864ab724aa51bd59db1a5a80705cadb9c6e0a834ab4ba85'
 
-pull_image 'docker://quay.io/staphb/elgato@sha256:4841ee5642816725358e173ca91c01f6fb2eece5b3a82dca8e175081f52ccc40' 'quay.io-staphb-elgato@sha256-4841ee5642816725358e173ca91c01f6fb2eece5b3a82dca8e175081f52ccc40'
+pull_image 'docker://quay.io/staphb/elgato@sha256:6616d8bc2d9bca07ed445f647b749422bd719ecc5411ace1bce38b8fc1a6e862' 'quay.io-staphb-elgato@sha256-6616d8bc2d9bca07ed445f647b749422bd719ecc5411ace1bce38b8fc1a6e862'
 
 pull_image 'docker://quay.io/staphb/emmtyper@sha256:544873e26de1753691f7765118cfc6295e18c46008a70968b251ad830ebf344a' 'quay.io-staphb-emmtyper@sha256-544873e26de1753691f7765118cfc6295e18c46008a70968b251ad830ebf344a'
 

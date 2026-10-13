@@ -2,8 +2,8 @@ process EL_GATO {
     tag "$meta.id"
     label 'process_medium'
 
-    container "quay.io/staphb/elgato@sha256:4841ee5642816725358e173ca91c01f6fb2eece5b3a82dca8e175081f52ccc40"
-    // "quay.io/staphb/elgato:1.22.0"
+    container "quay.io/staphb/elgato@sha256:6616d8bc2d9bca07ed445f647b749422bd719ecc5411ace1bce38b8fc1a6e862"
+    // "quay.io/staphb/elgato:1.23.0"
 
     input:
     tuple val(meta), path(reads), path(assembly)

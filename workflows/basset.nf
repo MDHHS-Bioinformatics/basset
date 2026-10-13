@@ -122,7 +122,7 @@ workflow BASSET {
     //
     // MODULE: Vibrio cholerae virulence factor identification
     //
-    ch_ariba_reads = INPUT_CHECK.out.shigella_input_files
+    ch_ariba_reads = INPUT_CHECK.out.vibrio_cholerae_input_files
         .filter { meta, reads_files, assembly_files ->
             meta.layout in ['paired_end']
     }
@@ -162,6 +162,9 @@ workflow BASSET {
     ch_summaries = ch_summaries.mix(EMMTYPER_SPYOGENES.out.summary)
     ch_versions = ch_versions.mix(EMMTYPER_SPYOGENES.out.versions.first())
 
+    //
+    // MODULE: Streptococcus dysgalactiae emm-typing
+    //
     EMMTYPER_SDYSGALACTIAE(
         INPUT_CHECK.out.sdysgalactiae_input_files
     )
@@ -292,7 +295,7 @@ workflow BASSET {
   
     // MODULE: Streptococcus pneumoniae serotyping
     //
-    ch_seroba_reads = INPUT_CHECK.out.shigella_input_files
+    ch_seroba_reads = INPUT_CHECK.out.spneumoniae_input_files
         .filter { meta, reads_files, assembly_files ->
             meta.layout in ['paired_end']
     }

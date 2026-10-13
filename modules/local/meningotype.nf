@@ -31,27 +31,52 @@ process MENINGOTYPE {
         error "ERROR: Sample ${meta.id} does not have valid assembly required by MeningoType!"
     }
     
+    // Run MeningoType and handle unsuccessful predictions
     """
     if [ "$is_compressed" == "true" ]; then
-        gzip -c -d $fasta > $fasta_name
+        gzip -cd $fasta > $fasta_name
     fi
+
+    # Execute MeningoType
+    exit_code=0
 
     meningotype \\
         $args \\
         $fasta_name \\
-        > ${prefix}_meningotype_output.tsv
+        > ${prefix}_meningotype_output.tsv \\
+        2> ${prefix}_meningotype.log || exit_code=\$?
 
-    # Generating BaSSeT summary file 
-    awk -F'\t' -v prefix="${prefix}" -v organism="${organism}" '
-    BEGIN { OFS="\t" }
-    NR == 2 {
-        print prefix, organism, "meningotype", "serogroup", \$2
-    }
-    ' "${prefix}_meningotype_output.tsv" > "${prefix}_meningotype_summary.tsv"
+    # Extract serogroup if the tool succeeded
+    serogroup=""
 
-    cat <<-END_VERSIONS > versions.yml
-    "${task.process}":
-        meningotype: \$( echo \$(meningotype --version 2>&1) | sed 's/^.*meningotype //' )
-    END_VERSIONS
+    if [ "\$exit_code" -eq 0 ] && \
+       [ -s "${prefix}_meningotype_output.tsv" ]; then
+
+        serogroup=\$(awk -F '\t' \
+            'NR==2 {print \$2}' \
+            "${prefix}_meningotype_output.tsv")
+    fi
+
+    # Default to Untypeable if no prediction
+    if [ -z "\$serogroup" ] || \
+       [ "\$serogroup" == "NA" ] || \
+       [ "\$serogroup" == "-" ]; then
+
+        serogroup="Untypeable"
+    fi
+
+    # Generate BaSSeT summary
+    printf '%s\t%s\tmeningotype\tserogroup\t%s\n' \
+        "${prefix}" \
+        "${organism}" \
+        "\$serogroup" \
+        > "${prefix}_meningotype_summary.tsv"
+
+    # Generate versions.yml
+    meningotype_version=\$(meningotype --version 2>&1 | sed 's/^.*meningotype //')
+
+    printf '"%s":\n    meningotype: "%s"\n' \
+        "${task.process}" \
+        "\$meningotype_version" > versions.yml
     """
 }

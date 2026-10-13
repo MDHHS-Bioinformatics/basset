@@ -48,7 +48,7 @@ These parameters control compute resource limits.
 | -------------- | ------- | -------- | ------------------------------------------------ |
 | `--max_cpus`   | integer | `16`     | Maximum CPUs that can be requested by any job.   |
 | `--max_memory` | string  | `128.GB` | Maximum memory that can be requested by any job. |
-| `--max_time`   | string  | `24.h`   | Maximum execution time for any job.              |
+| `--max_time`   | string  | `240.h`  | Maximum execution time for any job.              |
 
 ---
 
@@ -107,7 +107,7 @@ Specify the **pipeline version or Git revision** to run.
 Example:
 
 ```bash
-nextflow run MDHHS-Bioinformatics/basset -r v1.0.0
+nextflow run MDHHS-Bioinformatics/basset -r v1.1.0
 ```
 
 This ensures that the **exact same pipeline version** is used for analysis.
@@ -116,7 +116,7 @@ You can also run:
 
 | Example       | Description                        |
 | ------------- | ---------------------------------- |
-| `-r v1.0.0`   | Run a tagged release               |
+| `-r v1.1.0`   | Run a tagged release               |
 | `-r main`     | Run the latest development version |
 | `-r <commit>` | Run a specific Git commit          |
 
@@ -169,7 +169,7 @@ Example:
 
 ```nextflow
 process {
-    withName: ALIGNMENT {
+    withName: MENINGOTYPE {
         memory = 100.GB
         cpus = 8
     }

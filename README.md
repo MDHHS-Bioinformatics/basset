@@ -146,7 +146,7 @@ nextflow run MDHHS-Bioinformatics/basset \
   --outdir basset_results
 ```
 
-For advance run including species-specific analyses and ABRicate:
+For an advance run including species-specific analyses and ABRicate:
 ```bash
 nextflow run MDHHS-Bioinformatics/basset \
   -profile apptainer \
@@ -199,7 +199,7 @@ Contributions, issues, and pull requests are welcome! If you would like to contr
 If you use BaSSeT for your analysis, please cite the following doi:
 
 Vasco K., Blankenship H. & Miles-Jay A. (2026). 
-MDHHS-Bioinformatics/basset: v1.0.0 (v1.0.0). 
+MDHHS-Bioinformatics/basset: v1.1.0 (v1.1.0). 
 Zenodo. https://doi.org/10.5281/zenodo.20856443
 
 An extensive list of references for the tools used by the pipeline can be found in [`CITATIONS.md`](CITATIONS.md).

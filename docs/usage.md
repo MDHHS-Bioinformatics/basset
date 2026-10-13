@@ -241,7 +241,7 @@ For reproducible analyses, run a specific pipeline release:
 
 ```bash
 nextflow run MDHHS-Bioinformatics/basset \
-  -r v1.0.0 \
+  -r v1.1.0 \
   -profile singularity \
   --input samplesheet.csv \
   --outdir results
