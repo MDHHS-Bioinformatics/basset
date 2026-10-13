@@ -2,7 +2,7 @@
     "$schema": "http://json-schema.org/draft-07/schema",
     "$id": "https://github.com/MDHHS-Bioinformatics/basset/blob/main/nextflow_schema.json",
     "title": "MDHHS-Bioinformatics/basset",
-    "description": "Bacterial cluster analysis",
+    "description": "Bacterial Species-Specific typing",
     "type": "object",
     "definitions": {
         "input_output_options": {
@@ -19,7 +19,7 @@
                     "pattern": "^\\S+\\.csv$",
                     "schema": "assets/schema_input.json",
                     "description": "Path to comma-separated file containing information about the samples and reference in the analysis.",
-                    "help_text": "You will need to create a design file with information about the samples in your analysis before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 8 columns, and a header row. See [usage docs](https://github.com/MDHHS-Bioinformatics/basset/blob/main/docs/usage.md#samplesheet-input).",
+                    "help_text": "You will need to create a design file with information about the samples in your analysis before running the pipeline. Use this parameter to specify its location. It has to be a comma-separated file with 5 columns, and a header row: sample,fastq_1,fastq_2,assembly,organism. See [usage docs](https://github.com/MDHHS-Bioinformatics/basset/blob/main/docs/usage.md#samplesheet-input).",
                     "fa_icon": "fas fa-file-csv"
                 },
                 "outdir": {
@@ -38,7 +38,7 @@
                     "type": "string",
                     "description": "ABRicate database to use. If not specified, ABRicate is not run. Supported options: argannot, bacmet2, card, ecoh, ecoli_vf, megares, ncbi, plasmidfinder, resfinder, upec_expec_vf, vfdb, or victors",
                     "fa_icon": "fas fa-file-signature",
-                    "help_text": "All the organisms included in the run will be analyzed with ABRicate to detect virulence genes"
+                    "help_text": "All the organisms included in the run will be analyzed with ABRicate to detect virulence and resistance determinants"
                 },
                 "ont": {
                     "type": "boolean",
@@ -72,33 +72,25 @@
             "description": "Parameters used to call local databases",
             "help_text": "Some tools require pre-downloaded databases including Kaptive for Vibrio parahaemolyticus and spatyper",
             "properties": {
-                "lp_serogroup_db": {
+                "legionella_pneumophila_db": {
                     "type": "string",
-                    "description": "path to the Legionella serogroup database",
-                    "default": "./assets/databases/legionella_reportype/lp_serogroup_typing.fasta",
-                    "hidden": true,
-                    "fa_icon": "fas fa-folder-open"
-                },
-                "lp_subspecies_db": {
-                    "type": "string",
-                    "description": "path to the Legionella subspecies database",
-                    "default": "./assets/databases/legionella_reportype/lp_subspecies_prediction.fasta",
+                    "description": "path to the Legionella serogroup and subspecies databases",
+                    "default": "./assets/databases/legionella_reportype",
                     "hidden": true,
                     "fa_icon": "fas fa-folder-open"
                 },
                 "spatyper_repeats": {
                     "type": "string",
                     "description": "FASTA file with spa repeats",
-                    "default": "./assets/databases/spatyper/sparepeats.fasta",
+                    "default": "./assets/databases/spatyper_db/sparepeats.fasta",
                     "hidden": true,
                     "fa_icon": "fas fa-file-csv"
                 },
                 "spatyper_reporder": {
                     "type": "string",
                     "description": "TXT file with spa order",
-                    "default": "./assets/databases/spatyper/spatypes.txt",
+                    "default": "./assets/databases/spatyper_db/spatypes.txt",
                     "hidden": true,
-                    "help_text": "If you're running offline, Nextflow will not be able to fetch the institutional config files from the internet. If you don't need them, then this is not a problem. If you do need them, you should download the files from the repo and tell Nextflow where to find them with this parameter.",
                     "fa_icon": "fas fa-file-csv"
                 },
                 "vibriopara_k_db": {
@@ -328,6 +320,9 @@
     "allOf": [
         {
             "$ref": "#/definitions/input_output_options"
+        },
+        {
+            "$ref": "#/definitions/databases"
         },
         {
             "$ref": "#/definitions/institutional_config_options"
